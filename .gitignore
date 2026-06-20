@@ -1,0 +1,31 @@
+# Node
+node_modules/
+
+# Entorno
+.env
+.env.local
+
+# Build / salida
+dist/
+.pio
+
+# IDE
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Temporales
+*.log
+error.txt
+
+# Archivos grandes (exceden límite GitHub)
+Documentacion/Entregables_concurso/Entregable_3/Entregable_3.mp4
+
+# Versión anterior (Archivo)
+Desarrollo_tecnico/Software/Archivo/
+
+# OS
+Thumbs.db
+.DS_Store

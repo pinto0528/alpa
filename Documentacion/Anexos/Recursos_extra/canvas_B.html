@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas B — Sistema de Alerta de Incendios Rurales</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; display: flex; justify-content: center; padding: 30px; }
+  .canvas {
+    max-width: 1300px; width: 100%;
+    background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+  /* Header */
+  .header {
+    background: #1a3a5c; color: #fff; text-align: center; padding: 18px 20px 14px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .header .sub { font-size: 12px; font-weight: 300; margin-top: 4px; opacity: 0.85; font-style: italic; }
+  /* Project header */
+  .project-bar {
+    background: #e8f0f8; padding: 10px 20px; display: flex; justify-content: space-between;
+    font-size: 13px; color: #1a3a5c; font-weight: 500; border-bottom: 2px solid #1a3a5c;
+  }
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.4fr 0.9fr 1.2fr;
+    grid-template-rows: auto auto auto;
+  }
+  .cell {
+    border: 1px solid #d0d7de; padding: 10px 11px; display: flex; flex-direction: column;
+  }
+  .cell h3 {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    color: #1a3a5c; border-bottom: 2px solid #1a3a5c; padding-bottom: 4px; margin-bottom: 7px;
+  }
+  .cell p, .cell li { font-size: 10.5px; line-height: 1.45; color: #222; }
+  .cell ul { list-style: none; padding: 0; }
+  .cell ul li::before { content: "• "; color: #1a3a5c; font-weight: bold; }
+  .cell ul li { margin-bottom: 2px; font-size: 10.5px; line-height: 1.4; }
+  /* Row 1 */
+  .cadena { grid-column: 1 / 2; grid-row: 1 / 2; }
+  .actividades { grid-column: 2 / 3; grid-row: 1 / 2; }
+  .problema-proposito { grid-column: 3 / 4; grid-row: 1 / 2; }
+  .relaciones { grid-column: 4 / 5; grid-row: 1 / 2; }
+  .segmentos { grid-column: 5 / 6; grid-row: 1 / 2; }
+  /* Row 2 */
+  .recursos { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .propuesta { grid-column: 2 / 4; grid-row: 2 / 3; }
+  .canales { grid-column: 4 / 5; grid-row: 2 / 3; }
+  .segmentos2 { grid-column: 5 / 6; grid-row: 2 / 3; background: #f8fbff; }
+  /* Row 3 */
+  .costos { grid-column: 1 / 3; grid-row: 3 / 4; }
+  .metricas { grid-column: 3 / 4; grid-row: 3 / 4; }
+  .ingresos { grid-column: 4 / 6; grid-row: 3 / 4; }
+  /* Sub-blocks in problem/proposito */
+  .two-sub { display: flex; flex-direction: column; gap: 8px; height: 100%; }
+  .sub-block { flex: 1; }
+  .sub-block h4 {
+    font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #c0392b; margin-bottom: 3px;
+  }
+  .sub-block.proposito h4 { color: #1a7a4c; }
+  .sub-block p { font-size: 10.5px; line-height: 1.4; }
+  /* Footer */
+  .footer {
+    background: #f0f4f8; padding: 8px 20px; text-align: center;
+    font-size: 10px; color: #888; border-top: 1px solid #d0d7de;
+  }
+  .footer strong { color: #555; }
+  /* N.T. branding */
+  .brand { font-weight: 700; color: #1a3a5c; }
+  /* highlight */
+  .highlight { background: #fff8e1; padding: 0 2px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="header">
+    <h1>THE "B" CANVAS BUSINESS MODEL</h1>
+    <div class="sub">Comienza por el problema y el propósito, no por el producto o el mercado</div>
+  </div>
+
+  <div class="project-bar">
+    <span><span class="brand">N.T.</span> — Sistema de Alerta de Incendios Rurales</span>
+    <span>Equipo N.T. · UTN-FRT · Tucumán · Junio 2026</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- CADENA DE VALOR -->
+    <div class="cell cadena">
+      <h3>Cadena de Valor</h3>
+      <p><strong>Socios clave (stakeholders con propósito compartido):</strong></p>
+      <ul>
+        <li>UTN-FRT: I+D, laboratorios, certificación, financiamiento</li>
+        <li>Proveedores de componentes electrónicos</li>
+        <li>Aseguradoras agrícolas: canal B2B y escalamiento</li>
+        <li>Brigadas forestales y bomberos: validación técnica</li>
+        <li>Cooperativas agrícolas: acceso a productores</li>
+      </ul>
+    </div>
+
+    <!-- ACTIVIDADES CLAVES -->
+    <div class="cell actividades">
+      <h3>Actividades Claves</h3>
+      <ul>
+        <li>Desarrollo firmware ESP32 + LoRa</li>
+        <li>Diseño y optimización de PCB</li>
+        <li>Ensamblaje, testing y calibración por lote</li>
+        <li>Instalación en campo (1 día) + capacitación (2 h)</li>
+        <li>Actualización OTA trimestral</li>
+        <li>Monitoreo diario y soporte 24/7</li>
+      </ul>
+    </div>
+
+    <!-- PROBLEMA + PROPÓSITO -->
+    <div class="cell problema-proposito">
+      <div class="two-sub">
+        <div class="sub-block">
+          <h4>Problema Identificado</h4>
+          <p>Los productores agropecuarios en zonas rurales sin conectividad ni electricidad de red no tienen acceso a detección temprana de incendios. Cuando detectan el foco, ya es tarde: las pérdidas son totales.</p>
+        </div>
+        <div class="sub-block proposito">
+          <h4>Propósito</h4>
+          <p>Que ningún productor pierda su campo, su sustento o su patrimonio por no tener acceso a tecnología de detección temprana de incendios.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELACIONES -->
+    <div class="cell relaciones">
+      <h3>Relaciones</h3>
+      <p><strong>Pre-venta:</strong> relevamiento del campo, demo gratuita 15 días.</p>
+      <p><strong>Venta:</strong> instalación en 1 día, capacitación 2 h.</p>
+      <p><strong>Post-venta:</strong> soporte 24/7, actualización OTA, mantenimiento semestral, reportes mensuales.</p>
+      <p style="margin-top:4px;"><strong>Aseguradoras:</strong> co-branding por campaña, reuniones bimestrales.</p>
+    </div>
+
+    <!-- SEGMENTOS -->
+    <div class="cell segmentos">
+      <h3>Segmentos</h3>
+      <p><strong>Productores agropecuarios</strong> del NOA (Tucumán, Salta, Jujuy, Catamarca) en zonas sin conectividad:</p>
+      <ul>
+        <li>200-1.000 ha → kit básico</li>
+        <li>1.000-5.000 ha → kit estándar</li>
+        <li>5.000+ ha → kit premium</li>
+      </ul>
+      <p><strong>Aseguradoras agrícolas</strong> (B2B, licencias por asegurado monitoreado)</p>
+      <p><strong>Gobiernos municipales</strong> (licencias territoriales, escalamiento futuro)</p>
+    </div>
+
+    <!-- RECURSOS CLAVES -->
+    <div class="cell recursos">
+      <h3>Recursos Claves</h3>
+      <p><strong>Equipo:</strong> líder de proyecto, especialista en hardware, responsable comercial.</p>
+      <p><strong>Tecnología:</strong></p>
+      <ul>
+        <li>Nodo sensor: ESP32 + LoRa + sensores + panel solar 5W</li>
+        <li>Gateway: ESP32 + LoRaWAN + batería solar</li>
+        <li>Dashboard web + backend cloud</li>
+      </ul>
+      <p><strong>Infraestructura:</strong> taller y laboratorios UTN-FRT.</p>
+      <p><strong>Capital inicial:</strong> USD 2,950 (prototipado 10 unidades).</p>
+    </div>
+
+    <!-- PROPUESTA DE VALOR -->
+    <div class="cell propuesta">
+      <h3>Propuesta de Valor</h3>
+      <p>Sistema autónomo de <strong>detección temprana de incendios rurales en &lt;5 minutos</strong> — sin depender de señal celular, electricidad de red ni vigilancia humana. Sensores de humo, temperatura y llama con comunicación <strong>LoRa/LoRaWAN</strong>, paneles solares y geolocalización <strong>GPS</strong>.</p>
+      <ul style="margin-top:4px;">
+        <li><strong>Productor:</strong> alerta inmediata + reportes auditables para bonificación en pólizas de seguro</li>
+        <li><strong>Aseguradora:</strong> reducción de siniestralidad con datos verificados (60-80% menos siniestros graves)</li>
+        <li><strong>Bomberos/brigadas:</strong> geolocalización exacta del foco → intervención en etapa incipiente</li>
+        <li><strong>HyS industrial:</strong> activación inmediata de protocolos de evacuación (&lt;1 min)</li>
+      </ul>
+      <p style="margin-top:4px;"><strong>Precio:</strong> USD 500/kit (margen 50%). <strong>Cobertura:</strong> 24/7, 365 días.</p>
+    </div>
+
+    <!-- CANALES -->
+    <div class="cell canales">
+      <h3>Canales</h3>
+      <ul>
+        <li>Venta directa a productor</li>
+        <li>Cooperativas agrícolas</li>
+        <li>Aseguradoras (canal B2B)</li>
+        <li>Coordinación directa con bomberos/brigadas</li>
+        <li>Licitación municipal (futuro)</li>
+      </ul>
+      <p style="margin-top:4px; font-size:10px; color:#666;"><em>Se minimiza el impacto ambiental: logística consolidada por región, embalaje reciclable, documentación digital.</em></p>
+    </div>
+
+    <!-- SEGMENTOS (repeated for row2 visual fill) -->
+    <div class="cell segmentos2">
+      <h3>Segmentos (cont.)</h3>
+      <p><strong>Beneficiarios estratégicos (sin costo):</strong></p>
+      <ul>
+        <li>Bomberos voluntarios</li>
+        <li>Brigadas forestales</li>
+      </ul>
+      <p style="margin-top:4px;"><strong>Mercado objetivo inicial:</strong> 8.000-10.000 establecimientos en NOA (Tucumán, Salta, Jujuy, Catamarca).</p>
+    </div>
+
+    <!-- ESTRUCTURA DE COSTOS -->
+    <div class="cell costos">
+      <h3>Estructura de Costos</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:10.5px;">
+        <tr style="background:#eef2f6;">
+          <th style="text-align:left; padding:3px 5px; border:1px solid #d0d7de;">Concepto</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 1</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 2</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 3</th>
+        </tr>
+        <tr>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;">Fabricación</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$8,750</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$17,850</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$39,900</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;">Costos operativos</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$3,600</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$7,500</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$15,000</td>
+        </tr>
+        <tr style="background:#f8fbff;">
+          <td style="padding:3px 5px; border:1px solid #d0d7de;"><strong>Total</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$12,350</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$25,350</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$54,900</strong></td>
+        </tr>
+      </table>
+      <p style="margin-top:5px; font-size:10px;">Costo unitario: USD 250/kit piloto → USD 210/kit escala. <strong>Inversión inicial:</strong> USD 2,950 (10 kits prototipo + herramientas). Costos fijos: USD 300/mes (hosting, herramientas, adm.).</p>
+    </div>
+
+    <!-- MÉTRICAS DE IMPACTO -->
+    <div class="cell metricas">
+      <h3>Métricas de Impacto</h3>
+      <p><strong>Social:</strong></p>
+      <ul>
+        <li>190 productores en Año 3</li>
+        <li>1,750 en horizonte SOM (5-7 años)</li>
+        <li>95,000 ha monitoreadas</li>
+        <li>20 empleos directos</li>
+      </ul>
+      <p><strong>Ambiental:</strong></p>
+      <ul>
+        <li>Detección &lt;5 min (vs 30-40 min actual)</li>
+        <li>Contribución a ODS 13, 15 y 9</li>
+      </ul>
+      <p><strong>Económico:</strong></p>
+      <ul>
+        <li>Pérdidas evitadas &gt;USD 310,000/evento</li>
+        <li>ROI 5-10× para el productor</li>
+      </ul>
+    </div>
+
+    <!-- FUENTES DE INGRESOS -->
+    <div class="cell ingresos">
+      <h3>Fuentes de Ingresos</h3>
+      <table style="width:100%; border-collapse:collapse; font-size:10.5px;">
+        <tr style="background:#eef2f6;">
+          <th style="text-align:left; padding:3px 5px; border:1px solid #d0d7de;">Fuente</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Precio</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 1</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 2</th>
+          <th style="text-align:center; padding:3px 5px; border:1px solid #d0d7de;">Año 3</th>
+        </tr>
+        <tr>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;">Venta de kits</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">USD 500</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$17,500</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$42,500</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$95,000</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;">Suscripción monitoreo</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">USD 60/año</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$0</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$2,100</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">$7,200</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;">Licencias B2B</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">—</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">—</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">—</td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;">—</td>
+        </tr>
+        <tr style="background:#f8fbff;">
+          <td style="padding:3px 5px; border:1px solid #d0d7de;"><strong>Total ingresos</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de;"></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$17,500</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$44,600</strong></td>
+          <td style="padding:3px 5px; border:1px solid #d0d7de; text-align:center;"><strong>$102,200</strong></td>
+        </tr>
+      </table>
+      <p style="margin-top:5px; font-size:10px;">Margen bruto: 50% (piloto) → 58% (escala local). Suscripciones desde el año 2. Licencias B2B en desarrollo.</p>
+    </div>
+
+  </div><!-- /grid -->
+
+  <div class="footer">
+    <strong>N.T.</strong> — Sistema de Alerta de Incendios Rurales &nbsp;|&nbsp; UTN Facultad Regional Tucumán &nbsp;|&nbsp; EmprendeU 2026 &nbsp;|&nbsp; Diseño basado en Purpose Designthinking, 3 Vectores Regenerative Design, Innodriven
+  </div>
+
+</div>
+</body>
+</html>
