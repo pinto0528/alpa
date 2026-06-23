@@ -9,8 +9,8 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn, nsdecls
 from docx.oxml import parse_xml
 
-MD_PATH = os.path.join("Entregables_concurso", "Entregable_2", "entregable_2.md")
-OUT_PATH = os.path.join("Entregables_concurso", "Entregable_2", "entregable_2.docx")
+MD_PATH = os.path.join("Documentacion", "Entregables_concurso", "Entregable_4", "entregable_4.md")
+OUT_PATH = os.path.join("Documentacion", "Entregables_concurso", "Entregable_4", "entregable_4.docx")
 
 def resolve_image(md_dir, rel_path):
     full = os.path.normpath(os.path.join(md_dir, rel_path))

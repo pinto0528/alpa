@@ -1,0 +1,1 @@
+cambiar el color de outro y de intro y de dashboard y del cuadro al color lino crudo que usamos

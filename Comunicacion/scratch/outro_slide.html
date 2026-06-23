@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPA · Outro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #911B1E;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background: #911B1E;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 4rem;
+    }
+    .logo {
+      width: 560px;
+      height: auto;
+      margin-bottom: 2.5rem;
+    }
+    .logo .bar { fill: #fff; }
+    .tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin-bottom: 2rem;
+    }
+    .team {
+      text-align: left;
+      color: rgba(255,255,255,0.85);
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+    .team strong {
+      font-weight: 500;
+      color: #fff;
+    }
+    .team-role {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <svg viewBox="0 0 600 250" class="logo" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <mask id="cutout-white">
+          <rect x="140" y="30" width="320" height="190" fill="white" />
+          <text x="300" y="185" font-family="'Playfair Display', Georgia, serif"
+                font-weight="700" font-size="70" text-anchor="middle"
+                letter-spacing="0" fill="black">
+            <tspan>A</tspan>
+            <tspan dx="-11">L</tspan>
+            <tspan dx="-12">P</tspan>
+            <tspan dx="-20">A</tspan>
+          </text>
+        </mask>
+      </defs>
+      <rect class="bar" x="40" y="55" width="25" height="140" />
+      <rect class="bar" x="90" y="55" width="25" height="140" />
+      <rect x="140" y="30" width="320" height="190" fill="white" mask="url(#cutout-white)" />
+      <rect class="bar" x="485" y="55" width="25" height="140" />
+      <rect class="bar" x="535" y="55" width="25" height="140" />
+    </svg>
+
+    <div class="tagline">Cuidamos tu campo</div>
+
+    <div class="divider"></div>
+
+    <div class="team">
+      <strong>Mario Roberto Quiroga</strong><span class="team-role">Desarrollador Full-Stack</span><br>
+      <strong>Jeremias Mastafa Nazar</strong><span class="team-role">Desarrollador de Firmware</span><br>
+      <strong>Gonzalo Fabricio Lescano</strong><span class="team-role">Líder de Negocio y Comunicación</span><br>
+      <strong>Nicolas Pinto</strong><span class="team-role">Líder de Hardware y Documentación</span>
+    </div>
+  </div>
+</body>
+</html>

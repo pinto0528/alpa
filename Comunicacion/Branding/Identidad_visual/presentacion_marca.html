@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALPA — Presentación de Marca</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --rojo: #911b1e;
+        --blanco: #ffffff;
+        --oscuro: #222222;
+        --arena: #d4b896;
+        --gris: #666666;
+        --fondo: #111111;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: var(--fondo);
+        color: var(--blanco);
+        width: 100%;
+      }
+
+      /* ===== Cada slide = 1920×1080 ===== */
+      .slide {
+        width: 100%;
+        max-width: 1920px;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 */
+        position: relative;
+        margin: 0 auto 80px auto;
+      }
+      .slide:last-child {
+        margin-bottom: 0;
+      }
+
+      /* separador entre slides */
+      .slide::after {
+        content: attr(data-num) " / 08";
+        position: absolute;
+        bottom: -80px;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 10px;
+        color: #555;
+      }
+
+      .slide-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 80px;
+        overflow: hidden;
+      }
+
+      /* ===== Print ===== */
+      @media print {
+        @page {
+          size: 1920px 1080px;
+          margin: 0;
+        }
+        html, body {
+          width: 1920px;
+          height: 1080px;
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          background: var(--blanco);
+        }
+        .slide {
+          max-width: 100%;
+          width: 1920px;
+          height: 1080px;
+          padding: 0;
+          margin: 0;
+          page-break-after: always;
+          page-break-inside: avoid;
+        }
+        .slide:last-child {
+          page-break-after: auto;
+        }
+        .slide-content {
+          padding: 60px 80px;
+        }
+        .slide::after {
+          display: none;
+        }
+      }
+
+      /* ===== Títulos ===== */
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+      .label {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--rojo);
+        margin-bottom: 12px;
+      }
+
+      /* ===== Logo SVG (símbolo global via <use>) ===== */
+      .logo-alpa {
+        width: 400px;
+      }
+      .logo-alpa.small {
+        width: 160px;
+      }
+      .logo-alpa.large {
+        width: 500px;
+      }
+
+      /* ============================================================ */
+      /*  SLIDE 1 — MOODBOARD (grid irregular)                       */
+      /* ============================================================ */
+      .slide-moodboard {
+        background: var(--oscuro);
+      }
+      .slide-moodboard .mood-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 0.5fr;
+        gap: 3px;
+      }
+      .mood-grid .mood-img {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .mood-grid .mood-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .mood-grid .mood-img:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        background-image: url("../../Assets/mood1.jpg");
+        background-position: -30% center;
+      }
+      .mood-grid .mood-img:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+        background-image: url("../../Assets/mood5.jpg");
+      }
+      .mood-grid .mood-img:nth-child(3) {
+        grid-column: 3;
+        grid-row: 1;
+        background-image: url("../../Assets/mood2.jpg");
+      }
+      .mood-grid .mood-img:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+        background-image: url("../../Assets/mood3.jpg");
+      }
+      .mood-grid .mood-img:nth-child(5) {
+        grid-column: 3;
+        grid-row: 2;
+        background-image: url("../../Assets/mood4.jpg");
+      }
+      .mood-grid .mood-img:nth-child(6) {
+        grid-column: 1 / 4;
+        grid-row: 3;
+        background-image: url("../../Assets/mood6.jpg");
+      }
+
+      .slide-moodboard .mood-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+      }
+      .slide-moodboard .mood-brand {
+        position: absolute;
+        bottom: 60px;
+        left: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .slide-moodboard .mood-brand .label {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .slide-moodboard .mood-brand .logo-alpa {
+        width: 520px;
+      }
+      .slide-moodboard .mood-brand .tagline-text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 4px;
+        color: #911b1e;
+        margin-top: 20px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      /* ============================================================ */
+      /*  SLIDE 2 — LOGO SHOW                                         */
+      /* ============================================================ */
+      .slide-logo-show {
+        background: var(--oscuro);
+      }
+      .slide-logo-show .grid-2x2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .slide-logo-show .grid-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        position: relative;
+      }
+      .slide-logo-show .grid-item .bg-label {
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.4;
+        position: absolute;
+        bottom: 16px;
+        right: 20px;
+      }
+      .grid-item.bg-white {
+        background: var(--blanco);
+      }
+      .grid-item.bg-white .bg-label {
+        color: var(--oscuro);
+      }
+      .grid-item.bg-rojo {
+        background: var(--rojo);
+      }
+      .grid-item.bg-dark {
+        background: var(--oscuro);
+      }
+      .grid-item.bg-arena {
+        background: var(--arena);
+      }
+      .grid-item.bg-arena .bg-label {
+        color: var(--oscuro);
+      }
+
+      .grid-item .logo-alpa {
+        width: 300px;
+      }
+
+      .grid-item .type-sample {
+        width: 300px;
+        height: 50px;
+        margin-top: 30px;
+      }
+
+      .grid-item.bg-dark .bg-label {
+        color: #888;
+      }
+
+      /* isologo: solo barras sin texto (proporciones matching SVG) */
+      .isologo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .isologo .bar {
+        height: 56px;
+        width: 10px;
+        background: var(--rojo);
+      }
+      .isologo .bar.center {
+        width: 128px;
+        height: 76px;
+      }
+      .isologo.light .bar {
+        background: var(--blanco);
+      }
+
+      /* ============================================================ */
+      /*  SLIDE 3 — SIMBOLOGÍA DEL LOGO                               */
+      /* ============================================================ */
+      .slide-simbolo {
+        background: #ede0d4;
+        color: #3d2b1f;
+      }
+      .slide-simbolo .slide-content {
+        padding: 0;
+      }
+      .slide-simbolo .content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+      .slide-simbolo .left-panel {
+        flex: 0 0 42%;
+        position: relative;
+        overflow: hidden;
+      }
+      .slide-simbolo .left-panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .slide-simbolo .left-panel .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, transparent 40%, #ede0d4 100%);
+      }
+      .slide-simbolo .right-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 60px 70px;
+        gap: 16px;
+      }
+      .slide-simbolo .right-panel .label {
+        color: var(--rojo);
+        margin-bottom: 0;
+      }
+      .slide-simbolo .right-panel .logo-alpa {
+        width: 340px;
+        margin-bottom: 6px;
+      }
+      .slide-simbolo .right-panel .meaning-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .slide-simbolo .right-panel .meaning-item .item-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--rojo);
+      }
+      .slide-simbolo .right-panel .meaning-item .item-desc {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 1.6;
+        color: #5a4030;
+      }
+      .slide-simbolo .right-panel .meaning-item .item-desc strong {
+        color: #2c1810;
+        font-weight: 600;
+      }
+
+      /* ============================================================ */
+      /*  SLIDE 4 — PALETA + TIPOGRAFÍA                               */
+      /* ============================================================ */
+      .slide-palette {
+        background: var(--blanco);
+        color: var(--oscuro);
+      }
+      .slide-palette .content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+      }
+      .slide-palette .colors {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 2px;
+      }
+      .slide-palette .swatch {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 24px;
+      }
+      .slide-palette .swatch .hex {
+        font-family: "Montserrat", monospace;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+      .slide-palette .swatch .name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+        opacity: 0.7;
+        margin-top: 4px;
+      }
+      .slide-palette .swatch:nth-child(1) {
+        background: var(--rojo);
+        color: var(--blanco);
+      }
+      .slide-palette .swatch:nth-child(2) {
+        background: var(--oscuro);
+        color: var(--blanco);
+      }
+      .slide-palette .swatch:nth-child(3) {
+        background: var(--arena);
+        color: var(--oscuro);
+      }
+      .slide-palette .swatch:nth-child(4) {
+        background: #f5f5f5;
+        color: var(--oscuro);
+      }
+
+      .slide-palette .typography {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px;
+      }
+      .slide-palette .typography h2 {
+        font-size: 48px;
+        margin-bottom: 8px;
+      }
+      .slide-palette .typography .font-name {
+        font-size: 13px;
+        color: var(--gris);
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .slide-palette .typography .divider {
+        width: 60px;
+        height: 2px;
+        background: var(--rojo);
+        margin: 20px 0;
+      }
+      .slide-palette .typography .sans-sample {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        margin-bottom: 4px;
+      }
+      .slide-palette .typography .sans-sample strong {
+        font-weight: 700;
+      }
+      .slide-palette .typography .sans-sample.light {
+        font-weight: 300;
+      }
+
+      /* ============================================================ */
+      /*  PLACEHOLDER — slide 8                                       */
+      /* ============================================================ */
+      .slide-placeholder {
+        background: var(--oscuro);
+      }
+      .slide-placeholder .ph-content {
+        text-align: center;
+      }
+      .slide-placeholder .ph-icon {
+        font-size: 64px;
+        opacity: 0.15;
+        margin-bottom: 20px;
+      }
+      .slide-placeholder h2 {
+        font-size: 36px;
+        margin-bottom: 12px;
+        opacity: 0.8;
+      }
+      .slide-placeholder p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        opacity: 0.4;
+        max-width: 500px;
+        line-height: 1.6;
+      }
+
+      /* ============================================================ */
+      /*  SPLIT LAYOUT — slide 5 (vertical image + text)              */
+      /* ============================================================ */
+      .slide-split {
+        background: var(--oscuro);
+      }
+      .slide-split .slide-content {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+      }
+      .slide-split .split-left {
+        flex: 0 0 38%;
+        position: relative;
+        overflow: hidden;
+      }
+      .slide-split .split-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .slide-split .split-left .split-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          transparent 70%,
+          var(--oscuro) 100%
+        );
+      }
+      .slide-split .split-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 70px 80px;
+        gap: 20px;
+      }
+      .slide-split .split-right h2 {
+        font-size: 44px;
+      }
+      .slide-split .split-right .desc {
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        opacity: 0.75;
+        max-width: 520px;
+      }
+      .slide-split .split-right .specs {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 6px;
+      }
+      .slide-split .split-right .spec-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+        opacity: 0.85;
+      }
+      .slide-split .split-right .spec-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--rojo);
+        flex-shrink: 0;
+      }
+
+      /* ============================================================ */
+      /*  SENSORS GRID 2×2 — slide 6                                  */
+      /* ============================================================ */
+      .slide-sensors {
+        background: #ede0d4;
+        color: #3d2b1f;
+      }
+      .slide-sensors .slide-content {
+        padding: 60px 80px;
+      }
+      .slide-sensors .sensor-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 50px;
+        width: 100%;
+        max-width: 1000px;
+      }
+      .slide-sensors .sensor-card {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .slide-sensors .sensor-card .img-wrap {
+        width: 100%;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .slide-sensors .sensor-card .img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .slide-sensors .sensor-card .sensor-name {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #911b1e;
+      }
+      .slide-sensors .sensor-card .sensor-desc {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #5a4030;
+      }
+
+      /* ============================================================ */
+      /*  CENTERED FRAME — slide 7 (wide dashboard image)             */
+      /* ============================================================ */
+      .slide-image-center {
+        background: #1a1a1a;
+      }
+      .slide-image-center .slide-content {
+        padding: 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+      }
+      .slide-image-center .img-frame {
+        width: 100%;
+        max-width: 1100px;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        background: #1a1a1a;
+      }
+      .slide-image-center .img-frame::before {
+        content: "";
+        display: block;
+        padding-bottom: 46%;
+      }
+      .slide-image-center .img-frame img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      .slide-image-center .img-caption-bottom {
+        text-align: center;
+      }
+      .slide-image-center .img-caption-bottom .label {
+        margin-bottom: 6px;
+      }
+      .slide-image-center .img-caption-bottom h2 {
+        font-size: 36px;
+      }
+      .slide-image-center .img-caption-bottom p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        opacity: 0.6;
+        margin-top: 4px;
+      }
+
+      /* ============================================================ */
+      /*  SLIDE 8 — Iconos ventajas (placeholder temporal)             */
+      /* ============================================================ */
+
+      /* ============================================================ */
+      /*  SLIDE 9 — OUTRO / CIERRE                                   */
+      /* ============================================================ */
+      .slide-outro {
+        background: #d4b896;
+      }
+      .slide-outro .slide-content {
+        gap: 24px;
+      }
+      .slide-outro .logo-alpa {
+        width: 500px;
+      }
+      .slide-outro .outro-tagline {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 4px;
+        color: rgba(145, 27, 30, 0.9);
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .slide-outro .outro-divider {
+        width: 60px;
+        height: 1px;
+        background: rgba(145, 27, 30, 0.25);
+      }
+      .slide-outro .outro-team {
+        text-align: left;
+        color: rgba(145, 27, 30, 0.85);
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 2;
+        letter-spacing: 0.02em;
+      }
+      .slide-outro .outro-team strong {
+        font-weight: 500;
+        color: #911b1e;
+      }
+      .slide-outro .outro-team .role {
+        font-size: 13px;
+        color: #911b1e;
+        font-weight: 300;
+        display: inline-block;
+        margin-left: 8px;
+      }
+      @media (max-width: 768px) {
+        .slide-content {
+          padding: 30px 24px;
+        }
+        .slide-moodboard .mood-brand .logo-alpa {
+          width: 300px;
+        }
+        .slide-moodboard .mood-brand .tagline-text {
+          font-size: 14px;
+          letter-spacing: 2px;
+        }
+        .slide-moodboard .mood-brand {
+          bottom: 30px;
+          left: 30px;
+        }
+        .logo-alpa {
+          width: 250px;
+        }
+        .grid-item .logo-alpa {
+          width: 180px;
+        }
+        .slide-palette .content {
+          flex-direction: column;
+        }
+        .slide-palette .typography {
+          padding: 30px;
+        }
+        .slide-palette .typography h2 {
+          font-size: 32px;
+        }
+        .slide-palette .typography .sans-sample {
+          font-size: 24px;
+        }
+        .slide-logo-show .grid-item {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================ -->
+    <!-- SLIDE 1 — MOODBOARD / INSPIRACIÓN                            -->
+    <!-- ============================================================ -->
+    <section class="slide slide-moodboard" data-num="01">
+      <div class="mood-grid">
+        <div class="mood-img"></div>
+        <div class="mood-img"></div>
+        <div class="mood-img"></div>
+        <div class="mood-img"></div>
+        <div class="mood-img"></div>
+        <div class="mood-img"></div>
+      </div>
+      <div class="mood-overlay">
+        <div class="mood-brand">
+          <svg
+            class="logo-alpa"
+            viewBox="0 0 600 250"
+            role="img"
+            aria-label="ALPA"
+          >
+            <defs>
+              <mask id="mm-mask">
+                <rect x="140" y="30" width="320" height="190" fill="white" />
+                <text
+                  x="300"
+                  y="185"
+                  font-family="'Playfair Display', Georgia, serif"
+                  font-weight="700"
+                  font-size="70"
+                  text-anchor="middle"
+                  fill="black"
+                >
+                  <tspan>A</tspan>
+                  <tspan dx="6">L</tspan>
+                  <tspan dx="0">P</tspan>
+                  <tspan dx="-2">A</tspan>
+                </text>
+              </mask>
+            </defs>
+            <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+            <rect
+              x="140"
+              y="30"
+              width="320"
+              height="190"
+              fill="#911B1E"
+              mask="url(#mm-mask)"
+            />
+            <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+          </svg>
+          <div class="tagline-text">Cuidamos tu campo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 2 — LOGO SHOW                                          -->
+    <!-- ============================================================ -->
+    <section class="slide slide-logo-show" data-num="02">
+      <div class="grid-2x2">
+        <div class="grid-item bg-white">
+          <svg
+            class="logo-alpa"
+            viewBox="0 0 600 250"
+            role="img"
+            aria-label="ALPA"
+          >
+            <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="140" y="30" width="320" height="190" fill="#911B1E" />
+            <text
+              x="300"
+              y="185"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="70"
+              text-anchor="middle"
+              fill="#FFFFFF"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+            <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+          </svg>
+          <svg class="type-sample" viewBox="0 0 300 50">
+            <text
+              x="150"
+              y="40"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="46"
+              text-anchor="middle"
+              fill="#911B1E"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+          </svg>
+          <span class="bg-label">fondo hueso · logo rojo inca</span>
+        </div>
+        <div class="grid-item bg-rojo">
+          <svg
+            class="logo-alpa"
+            viewBox="0 0 600 250"
+            role="img"
+            aria-label="ALPA"
+          >
+            <rect x="40" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="90" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="140" y="30" width="320" height="190" fill="#FFFFFF" />
+            <text
+              x="300"
+              y="185"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="70"
+              text-anchor="middle"
+              fill="#911B1E"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+            <rect x="485" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="535" y="55" width="25" height="140" fill="#FFFFFF" />
+          </svg>
+          <svg class="type-sample" viewBox="0 0 300 50">
+            <text
+              x="150"
+              y="40"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="46"
+              text-anchor="middle"
+              fill="#FFFFFF"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+          </svg>
+          <span class="bg-label">fondo rojo inca · logo blanco</span>
+        </div>
+        <div class="grid-item bg-arena">
+          <svg
+            class="logo-alpa"
+            viewBox="0 0 600 250"
+            role="img"
+            aria-label="ALPA"
+          >
+            <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="140" y="30" width="320" height="190" fill="#911B1E" />
+            <text
+              x="300"
+              y="185"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="70"
+              text-anchor="middle"
+              fill="#D4B896"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+            <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+            <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+          </svg>
+          <svg class="type-sample" viewBox="0 0 300 50">
+            <text
+              x="150"
+              y="40"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="46"
+              text-anchor="middle"
+              fill="#911B1E"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+          </svg>
+          <span class="bg-label">fondo lino crudo · logo rojo inca</span>
+        </div>
+        <div class="grid-item bg-dark">
+          <svg
+            class="logo-alpa"
+            viewBox="0 0 600 250"
+            role="img"
+            aria-label="ALPA"
+          >
+            <rect x="40" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="90" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="140" y="30" width="320" height="190" fill="#FFFFFF" />
+            <text
+              x="300"
+              y="185"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="70"
+              text-anchor="middle"
+              fill="#222222"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+            <rect x="485" y="55" width="25" height="140" fill="#FFFFFF" />
+            <rect x="535" y="55" width="25" height="140" fill="#FFFFFF" />
+          </svg>
+          <svg class="type-sample" viewBox="0 0 300 50">
+            <text
+              x="150"
+              y="40"
+              font-family="'Playfair Display', Georgia, serif"
+              font-weight="700"
+              font-size="46"
+              text-anchor="middle"
+              fill="#FFFFFF"
+            >
+              <tspan>A</tspan>
+              <tspan dx="6">L</tspan>
+              <tspan dx="0">P</tspan>
+              <tspan dx="-2">A</tspan>
+            </text>
+          </svg>
+          <span class="bg-label">fondo oscuro · logo blanco</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 3 — SIMBOLOGÍA DEL LOGO                                -->
+    <!-- ============================================================ -->
+    <section class="slide slide-simbolo" data-num="03">
+      <div class="slide-content">
+        <div class="content">
+          <div class="left-panel">
+            <img src="../../Assets/poncho.png" alt="Poncho tucumano" />
+            <div class="overlay"></div>
+          </div>
+          <div class="right-panel">
+            <div class="label">Simbolología</div>
+            <svg
+              class="logo-alpa"
+              viewBox="0 0 600 250"
+              role="img"
+              aria-label="ALPA"
+            >
+              <defs>
+                <mask id="sim-mask">
+                  <rect x="140" y="30" width="320" height="190" fill="white" />
+                  <text
+                    x="300"
+                    y="185"
+                    font-family="'Playfair Display', Georgia, serif"
+                    font-weight="700"
+                    font-size="70"
+                    text-anchor="middle"
+                    fill="black"
+                  >
+                    <tspan>A</tspan>
+                    <tspan dx="6">L</tspan>
+                    <tspan dx="0">P</tspan>
+                    <tspan dx="-2">A</tspan>
+                  </text>
+                </mask>
+              </defs>
+              <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+              <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+              <rect
+                x="140"
+                y="30"
+                width="320"
+                height="190"
+                fill="#911B1E"
+                mask="url(#sim-mask)"
+              />
+              <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+              <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+            </svg>
+            <div class="meaning-item">
+              <span class="item-title">Bloque central</span>
+              <span class="item-desc"
+                >Representa el <strong>núcleo del hardware</strong> (nodo
+                sensor), transmitiendo robustez, estabilidad y contención.</span
+              >
+            </div>
+            <div class="meaning-item">
+              <span class="item-title">Barras laterales</span>
+              <span class="item-desc"
+                >Simbolizan la <strong>conectividad inalámbrica</strong> (ondas
+                LoRa/WiFi), los <strong>postes y alambrados</strong> del campo,
+                y las <strong>franjas del poncho tucumano</strong> — arraigo
+                regional y protección.</span
+              >
+            </div>
+            <div class="meaning-item">
+              <span class="item-title">Color rojo #911B1E</span>
+              <span class="item-desc"
+                >Representa el <strong>fuego y la alerta</strong> (la amenaza
+                que el sistema combate) y el tinte tradicional de los
+                <strong>telares norteños</strong>.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 4 — PALETA DE COLOR + TIPOGRAFÍA                       -->
+    <!-- ============================================================ -->
+    <section class="slide slide-palette" data-num="04">
+      <div class="slide-content">
+        <div class="content">
+          <div class="colors">
+            <div class="swatch">
+              <span class="hex">#911B1E</span>
+              <span class="name">Rojo inca · Primario</span>
+            </div>
+            <div class="swatch">
+              <span class="hex">#222222</span>
+              <span class="name">Pizarra</span>
+            </div>
+            <div class="swatch">
+              <span class="hex">#D4B896</span>
+              <span class="name">Lino crudo · Secundario</span>
+            </div>
+            <div class="swatch">
+              <span class="hex">#F5F5F5</span>
+              <span class="name">Hueso</span>
+            </div>
+          </div>
+          <div class="typography">
+            <div class="label">Tipografía</div>
+            <h2>Playfair Display</h2>
+            <span class="font-name">Serif · Títulos · Bold 700</span>
+            <div class="divider"></div>
+            <div class="sans-sample light">Montserrat Light</div>
+            <div class="sans-sample">Montserrat Regular</div>
+            <div class="sans-sample"><strong>Montserrat Bold</strong></div>
+            <span class="font-name" style="margin-top: 8px; display: block"
+              >Sans-serif · Cuerpo</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 5 — NODO SENSOR EN CAMPO                               -->
+    <!-- ============================================================ -->
+    <section class="slide slide-split" data-num="05">
+      <div class="slide-content">
+        <div class="split-left">
+          <img
+            src="../../Assets/poste.png"
+            alt="Nodo sensor instalado en campo"
+          />
+          <div class="split-overlay"></div>
+        </div>
+        <div class="split-right">
+          <div class="label" style="color: var(--arena)">Producto</div>
+          <h2>Nodo Sensor en Campo</h2>
+          <p class="desc">
+            El sistema se instala en un poste en el perímetro del campo. Cada
+            nodo mide temperatura, detecta flama y humo cada 5 segundos y
+            transmite la información por radio LoRa al gateway del productor.
+          </p>
+          <div class="specs">
+            <div class="spec-item">
+              <span class="spec-dot"></span>Cobertura LoRa 2–5 km en campo
+              abierto
+            </div>
+            <div class="spec-item">
+              <span class="spec-dot"></span>Sin señal celular ni red eléctrica
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 6 — COMPONENTES DEL SISTEMA                            -->
+    <!-- ============================================================ -->
+    <section class="slide slide-sensors" data-num="06">
+      <div class="slide-content">
+        <div class="label" style="margin-bottom: 36px">Componentes</div>
+        <div class="sensor-grid">
+          <div class="sensor-card">
+            <div class="img-wrap">
+              <img
+                src="../../Assets/sensor-temp.png"
+                alt="Sensor de temperatura"
+              />
+            </div>
+            <span class="sensor-name">Temperatura</span>
+            <span class="sensor-desc"
+              >DS18B20 · –55°C a +125°C<br />Precisión ±0.5°C · OneWire</span
+            >
+          </div>
+          <div class="sensor-card">
+            <div class="img-wrap">
+              <img src="../../Assets/sensor-llama.png" alt="Sensor de flama" />
+            </div>
+            <span class="sensor-name">Flama</span>
+            <span class="sensor-desc"
+              >KY-026 · Detección IR<br />Alcance ~5 m · Salida digital</span
+            >
+          </div>
+          <div class="sensor-card">
+            <div class="img-wrap">
+              <img src="../../Assets/sensor-humo.png" alt="Sensor de humo" />
+            </div>
+            <span class="sensor-name">Humo</span>
+            <span class="sensor-desc"
+              >GP2Y1014AU0F · Óptico IR<br />Detección 0–0.5 mg/m³ · &lt;2
+              s</span
+            >
+          </div>
+          <div class="sensor-card">
+            <div class="img-wrap">
+              <img src="../../Assets/antena.png" alt="Antena LoRa" />
+            </div>
+            <span class="sensor-name">LoRa</span>
+            <span class="sensor-desc"
+              >SX1262 · 915 MHz · +22 dBm<br />Alcance 2–5 km · SF7 ·
+              BW125</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 7 — DASHBOARD EN TIEMPO REAL                           -->
+    <!-- ============================================================ -->
+    <section class="slide slide-image-center" data-num="07">
+      <div class="slide-content">
+        <div class="img-frame">
+          <img src="../../Assets/dash.png" alt="Dashboard ALPA" />
+        </div>
+        <div class="img-caption-bottom">
+          <div class="label" style="color: var(--arena)">Plataforma</div>
+          <h2>Dashboard en Tiempo Real</h2>
+          <p>Alertas instantáneas · Historial de eventos · Estado de nodos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SLIDE 8 — OUTRO / CIERRE                                    -->
+    <!-- ============================================================ -->
+    <section class="slide slide-outro" data-num="08">
+      <div class="slide-content">
+        <svg
+          class="logo-alpa"
+          viewBox="0 0 600 250"
+          role="img"
+          aria-label="ALPA"
+        >
+          <defs>
+            <mask id="outro-mask">
+              <rect x="140" y="30" width="320" height="190" fill="white" />
+              <text
+                x="300"
+                y="185"
+                font-family="'Playfair Display', Georgia, serif"
+                font-weight="700"
+                font-size="70"
+                text-anchor="middle"
+                fill="black"
+              >
+                <tspan>A</tspan>
+                <tspan dx="6">L</tspan>
+                <tspan dx="0">P</tspan>
+                <tspan dx="-2">A</tspan>
+              </text>
+            </mask>
+          </defs>
+          <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+          <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+          <rect
+            x="140"
+            y="30"
+            width="320"
+            height="190"
+            fill="#911B1E"
+            mask="url(#outro-mask)"
+          />
+          <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+          <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+        </svg>
+        <div class="outro-tagline">Cuidamos tu campo</div>
+        <div class="outro-divider"></div>
+        <div class="outro-team">
+          <strong>Mario Roberto Quiroga</strong
+          ><span class="role">Desarrollador Full-Stack</span><br />
+          <strong>Jeremias Mastafa Nazar</strong
+          ><span class="role">Desarrollador de Firmware</span><br />
+          <strong>Gonzalo Fabricio Lescano</strong
+          ><span class="role">Líder de Negocio y Comunicación</span><br />
+          <strong>Nicolas Pinto</strong
+          ><span class="role">Líder de Hardware y Documentación</span>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
