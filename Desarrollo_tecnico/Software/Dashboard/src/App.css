@@ -28,6 +28,11 @@ body {
   gap: 1rem;
 }
 
+.logo-link {
+  display: flex;
+  text-decoration: none;
+}
+
 .logo-alpa {
   width: 250px;
   height: auto;
@@ -279,6 +284,7 @@ body {
   border-bottom: 2px solid transparent;
   transition: all 0.2s;
   margin-bottom: -1px;
+  text-decoration: none;
 }
 
 .tab:hover {

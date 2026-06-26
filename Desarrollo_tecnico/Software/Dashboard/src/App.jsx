@@ -7,18 +7,23 @@ import TimelineAlertas from './componentes/TimelineAlertas.jsx'
 import DetalleNodo from './componentes/DetalleNodo.jsx'
 import BarraEstado from './componentes/BarraEstado.jsx'
 import useMockData from './hooks/useMockData.js'
+import useRouter from './hooks/useRouter.js'
 
 const TABS = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'nodos', label: 'Nodos' },
-  { id: 'alertas', label: 'Alertas' },
+  { id: 'dashboard', path: '/', label: 'Dashboard' },
+  { id: 'nodos', path: '/nodos', label: 'Nodos' },
+  { id: 'alertas', path: '/alertas', label: 'Alertas' },
 ]
 
 function App() {
   const [autenticado, setAutenticado] = useState(false)
-  const [tab, setTab] = useState('dashboard')
+  const [path, navigate] = useRouter()
   const [nodoSeleccionado, setNodoSeleccionado] = useState(null)
   const { nodos, alertas, conectado, nodosInfo } = useMockData()
+
+  const tabActual = path === '/' ? 'dashboard' : path.slice(1)
+  const tabValido = TABS.find(t => t.id === tabActual)
+  if (!tabValido && autenticado) navigate('/')
 
   if (!autenticado) return <Login onLogin={() => setAutenticado(true)} />
 
@@ -26,23 +31,25 @@ function App() {
     <div className="app">
       <header className="header">
         <div className="header-left">
-          <svg viewBox="0 0 600 250" className="logo-alpa" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <mask id="cutout">
-                <rect x="140" y="30" width="320" height="190" fill="white" />
-                <text x="300" y="185" fontFamily="'Playfair Display', Georgia, serif"
-                      fontWeight="700" fontSize="70" textAnchor="middle"
-                      letterSpacing="0" fill="black">
-                  <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
-                </text>
-              </mask>
-            </defs>
-            <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
-            <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
-            <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout)" />
-            <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
-            <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
-          </svg>
+          <a href="/" className="logo-link" onClick={e => { e.preventDefault(); navigate('/') }}>
+            <svg viewBox="0 0 600 250" className="logo-alpa" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <mask id="cutout">
+                  <rect x="140" y="30" width="320" height="190" fill="white" />
+                  <text x="300" y="185" fontFamily="'Playfair Display', Georgia, serif"
+                        fontWeight="700" fontSize="70" textAnchor="middle"
+                        letterSpacing="0" fill="black">
+                    <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
+                  </text>
+                </mask>
+              </defs>
+              <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+              <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+              <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout)" />
+              <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+              <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+            </svg>
+          </a>
           <div className="header-titles">
             <h1>Panel de Monitoreo</h1>
             <span className="tagline">Cuidamos tu campo</span>
@@ -56,14 +63,15 @@ function App() {
 
       <nav className="tabs">
         {TABS.map(t => (
-          <button key={t.id} className={`tab ${tab === t.id ? 'activo' : ''}`} onClick={() => setTab(t.id)}>
+          <a key={t.id} href={t.path} className={`tab ${tabActual === t.id ? 'activo' : ''}`}
+             onClick={e => { e.preventDefault(); navigate(t.path) }}>
             {t.label}
-          </button>
+          </a>
         ))}
       </nav>
 
       <main>
-        {tab === 'dashboard' && (
+        {tabActual === 'dashboard' && (
           <>
             <DashboardStats nodos={nodos} alertas={alertas} />
             <section style={{ marginTop: '1.5rem' }}>
@@ -72,10 +80,10 @@ function App() {
             </section>
           </>
         )}
-        {tab === 'nodos' && (
+        {tabActual === 'nodos' && (
           <PanelResumen nodos={nodos} onSeleccionar={setNodoSeleccionado} />
         )}
-        {tab === 'alertas' && (
+        {tabActual === 'alertas' && (
           <TimelineAlertas alertas={alertas} />
         )}
       </main>
