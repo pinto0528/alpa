@@ -14,7 +14,7 @@ Existe una oportunidad clara de desarrollar un sistema de detección autónomo, 
 
 ## 2. Problema
 
-Los productores agrícolas en zonas rurales sin conectividad no cuentan con un sistema accesible de detección temprana de incendios. Esto afecta directamente a más de 15.000 establecimientos productivos (>200 ha) en el Noroeste Argentino (NOA).
+Los productores agrícolas en zonas rurales sin conectividad no cuentan con un sistema accesible de detección temprana de incendios. Esto afecta directamente a más de 35.000 establecimientos productivos en el Noroeste Argentino (NOA).
 
 El problema persiste porque:
 - Las soluciones satelitales tienen latencias de horas
