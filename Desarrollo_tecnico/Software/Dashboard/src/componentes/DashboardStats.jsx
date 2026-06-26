@@ -3,7 +3,9 @@ export default function DashboardStats({ nodos, alertas }) {
   const tempPromedio = nodos.length
     ? (nodos.reduce((s, n) => s + n.temperatura, 0) / nodos.length).toFixed(1)
     : '—'
-  const riesgo = enAlerta.length > 1 ? 'crítico' : enAlerta.length === 1 ? 'moderado' : 'mínimo'
+  const hayFlama = nodos.some(n => n.flama)
+  const hayAlgo = nodos.some(n => n.humo || n.temperatura >= 70)
+  const riesgo = hayFlama ? 'crítico' : hayAlgo ? 'moderado' : 'mínimo'
   const riesgoClase = riesgo === 'crítico' ? 'rojo' : riesgo === 'moderado' ? 'ambar' : 'verde'
 
   return (
