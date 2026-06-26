@@ -1,6 +1,8 @@
-# Sistema de Alerta de Incendios Rurales
+# ALPA — Sistema de Alerta de Incendios Rurales
 
-Sistema autónomo de detección temprana de incendios rurales para productores agrícolas en zonas sin conectividad.
+**Cuidamos tu campo**
+
+Sistema autónomo de detección temprana de incendios rurales para productores agrícolas en zonas sin conectividad. Desarrollado en el marco del programa **EmprendeU 2026**.
 
 ## Problema
 
@@ -28,22 +30,27 @@ Nodo sensor (LoRa 915 MHz) → Gateway (LoRa → WiFi) → Servidor (Express + N
 ## Estructura del repositorio
 
 ```
-├── Desarrollo_tecnico/
-│   ├── Hardware/                  # Esquemas, BOM, prototipos
-│   ├── Software/
-│   │   ├── Servidor/              # Backend activo
-│   │   ├── Dashboard/             # Frontend activo (React + Vite)
-│   │   └── Firmware_sensores/     # Firmware para nodo sensor y gateway (PlatformIO)
-├── Documentacion/                  # Documentación del proyecto
-└── Herramientas/                   # Scripts de utilidad
+├── Comunicacion/          # Branding, identidad visual, assets, scratch de comunicación
+├── Desarrollo_Tecnico/    # Hardware, firmware, servidor y dashboard
+├── Documentacion/         # Modelo de negocio, entregables, finanzas, validación, impacto
+└── Herramientas/          # Scripts de utilidad (md_to_docx, render_mermaid)
 ```
+
+### Ramas
+
+| Rama | Contenido |
+|---|---|
+| `develop` | Todas las carpetas integradas |
+| `comunicacion` | Solo `Comunicacion/` + `Herramientas/` |
+| `desarrollo-tecnico` | Solo `Desarrollo_Tecnico/` + `Herramientas/` |
+| `documentacion` | Solo `Documentacion/` + `Herramientas/` |
 
 ## Uso local
 
 ### Servidor
 
 ```bash
-cd Desarrollo_tecnico/Software/Servidor
+cd Desarrollo_Tecnico/Software/Servidor
 npm install
 npm start
 ```
@@ -51,11 +58,27 @@ npm start
 ### Dashboard
 
 ```bash
-cd Desarrollo_tecnico/Software/Dashboard
+cd Desarrollo_Tecnico/Software/Dashboard
 npm install
 npm run dev
 ```
 
 ## Estado del proyecto
 
-Prototipo funcional / MVP temprano. Desarrollado en el marco del programa EmprendeU.
+MVP funcional con entregable final (Entregable 4) completado y presentado.
+
+## Marca
+
+- **Color principal:** `#911B1E` (rojo inca)
+- **Secundario:** `#D4B896` (lino crudo)
+- **Tipografía:** Playfair Display (títulos) + Montserrat (cuerpo/UI)
+- **Identidad visual completa:** `Comunicacion/Branding/Identidad_visual/manual_identidad.md`
+
+## Equipo
+
+| Rol | Miembro |
+|---|---|
+| Full-Stack | Mario Roberto Quiroga |
+| Firmware | Jeremias Mastafa Nazar |
+| Negocio | Gonzalo Fabricio Lescano |
+| Hardware | Nicolas Pinto |
