@@ -20,7 +20,7 @@ Sistema IoT de bajo costo que detecta incendios en etapa incipiente (<5 minutos)
 - **Nodo sensor:** XIAO ESP32-S3 + módulo LoRa SX1262 (915 MHz) + sensores DS18B20 (temperatura), KY-026 (flama), detector de humo
 - **Gateway:** XIAO ESP32-S3 + LoRa (receptor) + WiFi
 - **Servidor:** Node.js + Express + Socket.IO + NeDB
-- **Dashboard:** React 18 + Vite + Socket.IO Client
+- **Dashboard:** React 18 + Vite + datos simulados — modo demo autónomo (sin backend)
 - **Alimentación:** Panel solar + batería 18650 (>24h autonomía)
 
 ## 4. Modelo de negocio

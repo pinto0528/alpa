@@ -45,7 +45,7 @@ Desarrollar e implementar un sistema autónomo de detección temprana de incendi
 
 1. Diseñar un nodo sensor de bajo consumo basado en XIAO ESP32-S3 con sensores de temperatura, flama y humo, comunicado vía LoRa
 2. Implementar un gateway que reciba las transmisiones LoRa y las reenvíe a un servidor vía WiFi
-3. Desarrollar un servidor backend con API REST y WebSocket para almacenar y distribuir eventos
+3. Desarrollar un servidor backend opcional con API REST y WebSocket para almacenar y distribuir eventos (el dashboard funciona standalone en modo demo)
 4. Construir un dashboard web en tiempo real para visualizar el estado de los nodos y las alertas
 5. Validar el prototipo en condiciones de campo con productores reales
 

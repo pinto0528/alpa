@@ -38,8 +38,8 @@ Se desarrolló un prototipo funcional de un sistema autónomo de detección temp
 |---|---|---|
 | **Nodo sensor** | Seeed Studio XIAO ESP32-S3 + Wio-SX1262 (LoRa) | Adquiere datos de sensores de temperatura, llama y humo; los transmite por radiofrecuencia LoRa |
 | **Receptor / Gateway** | Seeed Studio XIAO ESP32-S3 + Wio-SX1262 (LoRa) | Recibe las alertas del nodo sensor, las procesa y las envía al dashboard web |
-| **Backend API** | Node.js + Express + PostgreSQL | Almacena eventos, gestiona usuarios y expone endpoints REST |
-| **Dashboard web** | HTML + CSS + JS (embebido en el backend) | Visualización en tiempo real de alertas, históricos y estado de los nodos |
+| **Backend API** | Node.js + Express + NeDB | Almacena eventos, gestiona usuarios y expone endpoints REST (opcional — el front funciona standalone) |
+| **Dashboard web** | React 18 + Vite (standalone) | Visualización en tiempo real de alertas, históricos y estado de los nodos — modo demo con login, mapa satelital y simulación |
 
 ### 1.2 Sensores del Nodo
 

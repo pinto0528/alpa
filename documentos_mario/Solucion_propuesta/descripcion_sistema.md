@@ -39,9 +39,9 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 
 2. **Capa de comunicación (LoRa + gateway):** El gateway recibe las transmisiones LoRa de todos los nodos en su alcance, clasifica si es una alerta o un reporte de estado, y reenvía los datos al servidor vía WiFi mediante HTTP POST.
 
-3. **Capa de servidor (backend):** Servidor Node.js con Express que expone una API REST para recibir y consultar eventos. Almacena los datos en NeDB (base de datos embebida basada en archivos). Broadcast en tiempo real vía Socket.IO.
+3. **Capa de servidor (backend):** Servidor Node.js con Express que expone una API REST para recibir y consultar eventos. Almacena los datos en NeDB (base de datos embebida basada en archivos). Broadcast en tiempo real vía Socket.IO (opcional — el dashboard funciona standalone en modo demo).
 
-4. **Capa de presentación (dashboard):** Aplicación React con Vite que se conecta al servidor vía WebSocket y muestra el estado de los nodos, las alertas en tiempo real y el historial de eventos.
+4. **Capa de presentación (dashboard):** Aplicación React con Vite que funciona en modo demo autónomo con datos simulados, o se conecta al servidor vía WebSocket si hay backend disponible. Muestra el estado de los nodos, las alertas en tiempo real y el historial de eventos.
 
 ## 3. Componentes
 
@@ -105,13 +105,40 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 | Elemento | Especificación |
 |---|---|
 | Framework | React 18 + Vite 5 |
-| Conexión | Socket.IO Client (WebSocket) |
-| Proxy | `/api` y `/socket.io` → servidor :3001 |
+| Conexión | Modo demo autónomo (useMockData) — Socket.IO queda disponible para backend real |
+| Proxy | `/api` → servidor :3001 (solo si se conecta backend) |
+
+**Autenticación:**
+- Pantalla de login con marca ALPA y tagline "Cuidamos tu campo"
+- Credenciales demo: `alpa` / `alpa2025`
+- Enrutamiento interno con `useRouter.js` (sin dependencias externas)
 
 **Componentes principales:**
-- **BarraEstado:** Indicador de conexión al servidor y cantidad de nodos activos
-- **PanelResumen:** Tarjetas por nodo con temperatura, flama, humo y última actualización
-- **TimelineAlertas:** Lista cronológica de alertas con motivo (flama/humo/temperatura elevada)
+- **Login:** Pantalla de ingreso con logo ALPA y validación de credenciales
+- **DashboardStats:** Tarjetas de resumen (nodos activos, alertas activas, temperatura promedio, riesgo general)
+- **MapaNodos:** Mapa satelital interactivo (Leaflet + ESRI World Imagery) con posición de cada nodo, color según estado (rojo=crítico, ámbar=moderado, verde=normal), líneas punteadas de distancia al gateway y popups con datos del nodo
+- **DetalleNodo:** Modal con información completa del nodo al hacer clic
+- **PanelResumen:** Grilla de nodos con datos de temperatura, flama y humo
+- **TimelineAlertas:** Lista cronológica de alertas con motivo
+- **PanelSimulacion:** Botón flotante ⚡ que permite inyectar eventos manuales (normal/moderado/crítico)
+
+**Lógica de riesgo:**
+- Flama detectada → nivel **crítico**
+- Humo detectado o temperatura ≥70°C → nivel **moderado**
+- Ninguna condición → nivel **mínimo**
+
+**Datos simulados:**
+- 4 nodos simulados (Norte, Este, Oeste, Sur) con ciclo de actualización cada 3 segundos
+- Función `simular()` para inyección manual de eventos desde el panel ⚡
+- Sin dependencia de backend — el frontend funciona standalone
+
+**Coordenadas y ubicación:**
+- Gateway en casa del productor: `-26.912265, -65.230117` (campo agrícola en Leales, Tucumán)
+- 4 nodos en los linderos (Norte, Este, Oeste, Sur) a ~250 m del gateway
+- Distancia calculada con fórmula Haversine, visible en popups del mapa y en DetalleNodo
+- Mapa satelital con ESRI World Imagery y marcadores con color según estado
+
+**Librerías externas:** React 18 + Leaflet para mapas satelitales interactivos. Socket.IO Client se eliminó del proyecto.
 
 **Tema visual:** Dark mode (fondo `#0f172a`), tarjetas en `#1e293b`, alertas con borde rojo y animación pulsante.
 
@@ -123,7 +150,7 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 4. **Clasificación:** El gateway evalúa si es alerta (flama, temperatura >50°C, humo)
 5. **Envío HTTP:** POST JSON al servidor con los datos y el tipo (`status` o `alerta`)
 6. **Almacenamiento:** El servidor guarda en NeDB (eventos y alertas)
-7. **Broadcast:** El servidor emite el evento por WebSocket a todos los clientes
+7. **Broadcast:** El servidor emite el evento por WebSocket a todos los clientes (opcional — el modo demo usa datos simulados sin backend)
 8. **Visualización:** El dashboard actualiza las tarjetas y la timeline de alertas
 
 **Formatos de datos:**

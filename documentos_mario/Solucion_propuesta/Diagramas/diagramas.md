@@ -41,14 +41,14 @@ graph TD
     end
 
     subgraph "Cliente"
-        D["Dashboard React<br/>(WebSocket)"]
+        D["Dashboard React<br/>(Modo demo / WebSocket opcional)"]
     end
 
     NS1 -->|"LoRa 915 MHz"| GW
     NS2 -->|"LoRa 915 MHz"| GW
     NS3 -->|"LoRa 915 MHz"| GW
     GW -->|"WiFi / HTTP POST"| S
-    S -->|"WebSocket"| D
+    S -.->|"WebSocket (opcional)"| D
 
     classDef sensor fill:#e1f5fe,stroke:#01579b
     classDef gateway fill:#fff3e0,stroke:#e65100
@@ -113,7 +113,7 @@ graph TD
     end
 
     subgraph "Dashboard"
-        CL["Socket.IO Client"]
+        CL["Cliente (useMockData / Socket.IO opcional)"]
     end
 
     GW -->|"/api/eventos"| API

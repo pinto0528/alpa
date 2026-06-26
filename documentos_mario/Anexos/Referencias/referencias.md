@@ -62,7 +62,6 @@ Este documento compila todas las referencias bibliográficas, técnicas e instit
 | Express | 4.21.x | https://expressjs.com |
 | Socket.IO | 4.7.x | https://socket.io |
 | NeDB | — | https://github.com/louischatriot/nedb |
-| Socket.IO Client | 4.7.x | https://socket.io/docs/v4/client-api/ |
 | React | 18.3.x | https://react.dev |
 | Vite | 5.4.x | https://vite.dev |
 | RadioLib | 7.1.x | https://github.com/jgromes/RadioLib |
