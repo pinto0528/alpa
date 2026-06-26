@@ -116,7 +116,7 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 **Componentes principales:**
 - **Login:** Pantalla de ingreso con logo ALPA y validación de credenciales
 - **DashboardStats:** Tarjetas de resumen (nodos activos, alertas activas, temperatura promedio, riesgo general)
-- **MapaNodos:** Mapa SVG con posición de cada nodo y color según estado (rojo=crítico, ámbar=moderado, verde=normal)
+- **MapaNodos:** Mapa satelital interactivo (Leaflet + ESRI World Imagery) con posición de cada nodo, color según estado (rojo=crítico, ámbar=moderado, verde=normal), líneas punteadas de distancia al gateway y popups con datos del nodo
 - **DetalleNodo:** Modal con información completa del nodo al hacer clic
 - **PanelResumen:** Grilla de nodos con datos de temperatura, flama y humo
 - **TimelineAlertas:** Lista cronológica de alertas con motivo
@@ -132,7 +132,13 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 - Función `simular()` para inyección manual de eventos desde el panel ⚡
 - Sin dependencia de backend — el frontend funciona standalone
 
-**Librerías externas:** Ninguna más allá de React 18. Socket.IO Client se eliminó del proyecto.
+**Coordenadas y ubicación:**
+- Gateway en casa del productor: `-26.912265, -65.230117` (campo agrícola en Leales, Tucumán)
+- 4 nodos en los linderos (Norte, Este, Oeste, Sur) a ~250 m del gateway
+- Distancia calculada con fórmula Haversine, visible en popups del mapa y en DetalleNodo
+- Mapa satelital con ESRI World Imagery y marcadores con color según estado
+
+**Librerías externas:** React 18 + Leaflet para mapas satelitales interactivos. Socket.IO Client se eliminó del proyecto.
 
 **Tema visual:** Dark mode (fondo `#0f172a`), tarjetas en `#1e293b`, alertas con borde rojo y animación pulsante.
 

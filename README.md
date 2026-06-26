@@ -56,7 +56,7 @@ Abrir `http://localhost:5173` y loguear con:
 
 El dashboard incluye:
 - Login con marca ALPA
-- Tab Dashboard con estadísticas y mapa de nodos
+- Tab Dashboard con estadísticas y mapa satelital interactivo (Leaflet + ESRI World Imagery)
 - Tab Nodos con detalle de cada sensor
 - Tab Alertas con timeline
 - Panel de simulación (⚡) para disparar eventos críticos, moderados o normales manualmente
