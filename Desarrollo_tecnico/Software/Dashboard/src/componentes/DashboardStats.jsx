@@ -13,7 +13,7 @@ export default function DashboardStats({ nodos, alertas }) {
         <span className="stat-label">Nodos activos</span>
       </div>
       <div className="stat-card">
-        <span className="stat-valor">{alertasActivas}</span>
+        <span className="stat-valor">{enAlerta.length}</span>
         <span className="stat-label">Alertas activas</span>
       </div>
       <div className="stat-card">
