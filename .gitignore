@@ -29,3 +29,9 @@ Desarrollo_tecnico/Software/Archivo/
 # OS
 Thumbs.db
 .DS_Store
+
+# Server data (generated)
+Desarrollo_tecnico/Software/Servidor/data/
+
+# Temp
+crear/

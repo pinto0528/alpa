@@ -145,7 +145,7 @@ Los siguientes documentos forman parte del repositorio completo del proyecto y p
 | Firmware Nodo Sensor | `Desarrollo_tecnico/Software/Firmware_sensores/nodo_sensor/` | Código fuente del firmware del nodo sensor |
 | Firmware Gateway     | `Desarrollo_tecnico/Software/Firmware_sensores/gateway/`     | Código fuente del gateway LoRa → WiFi      |
 | Backend API          | `Desarrollo_tecnico/Software/Servidor/server.js`             | Backend Express + NeDB + Socket.IO         |
-| Dashboard Web        | `Desarrollo_tecnico/Software/Dashboard/`                     | Frontend React + Vite con branding ALPA    |
+| Dashboard Web        | `Desarrollo_tecnico/Software/Dashboard/`                     | Frontend React + Vite con branding ALPA, modo demo autónomo (login + simulación), sin dependencia de backend |
 
 ### Entregables Anteriores
 

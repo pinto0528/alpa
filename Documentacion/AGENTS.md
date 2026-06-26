@@ -8,8 +8,8 @@ Proyecto de detección temprana de incendios para productores agropecuarios en z
 
 - **Firmware**: C/C++ (PlatformIO, ESP32, Arduino)
 - **Comunicaciones**: LoRa/LoRaWAN, RF
-- **Backend**: Node.js / Python
-- **Dashboard**: HTML, JavaScript, visualización de datos en tiempo real
+- **Backend**: Node.js + Express + Socket.IO + NeDB (opcional — el front funciona standalone)
+- **Dashboard**: React 18 + Vite 5, datos simulados en modo demo, panel de simulación manual
 - **Hardware**: Sensores de temperatura, humo, llama; módulos LoRa; paneles solares
 - **Documentación**: Markdown, PDF, Excel
 

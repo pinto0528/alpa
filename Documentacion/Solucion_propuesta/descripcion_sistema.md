@@ -105,13 +105,34 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 | Elemento | Especificación |
 |---|---|
 | Framework | React 18 + Vite 5 |
-| Conexión | Socket.IO Client (WebSocket) |
-| Proxy | `/api` y `/socket.io` → servidor :3001 |
+| Conexión | Modo demo autónomo (useMockData) — Socket.IO queda disponible para backend real |
+| Proxy | `/api` → servidor :3001 (solo si se conecta backend) |
+
+**Autenticación:**
+- Pantalla de login con marca ALPA y tagline "Cuidamos tu campo"
+- Credenciales demo: `alpa` / `alpa2025`
+- Enrutamiento interno con `useRouter.js` (sin dependencias externas)
 
 **Componentes principales:**
-- **BarraEstado:** Indicador de conexión al servidor y cantidad de nodos activos
-- **PanelResumen:** Tarjetas por nodo con temperatura, flama, humo y última actualización
-- **TimelineAlertas:** Lista cronológica de alertas con motivo (flama/humo/temperatura elevada)
+- **Login:** Pantalla de ingreso con logo ALPA y validación de credenciales
+- **DashboardStats:** Tarjetas de resumen (nodos activos, alertas activas, temperatura promedio, riesgo general)
+- **MapaNodos:** Mapa SVG con posición de cada nodo y color según estado (rojo=crítico, ámbar=moderado, verde=normal)
+- **DetalleNodo:** Modal con información completa del nodo al hacer clic
+- **PanelResumen:** Grilla de nodos con datos de temperatura, flama y humo
+- **TimelineAlertas:** Lista cronológica de alertas con motivo
+- **PanelSimulacion:** Botón flotante ⚡ que permite inyectar eventos manuales (normal/moderado/crítico)
+
+**Lógica de riesgo:**
+- Flama detectada → nivel **crítico**
+- Humo detectado o temperatura ≥70°C → nivel **moderado**
+- Ninguna condición → nivel **mínimo**
+
+**Datos simulados:**
+- 4 nodos simulados (Norte, Este, Oeste, Sur) con ciclo de actualización cada 3 segundos
+- Función `simular()` para inyección manual de eventos desde el panel ⚡
+- Sin dependencia de backend — el frontend funciona standalone
+
+**Librerías externas:** Ninguna más allá de React 18. Socket.IO Client se eliminó del proyecto.
 
 **Tema visual:** Dark mode (fondo `#0f172a`), tarjetas en `#1e293b`, alertas con borde rojo y animación pulsante.
 
