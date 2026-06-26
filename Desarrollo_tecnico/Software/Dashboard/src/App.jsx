@@ -1,43 +1,15 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
+import Login from './componentes/Login.jsx'
 import PanelResumen from './componentes/PanelResumen.jsx'
 import TimelineAlertas from './componentes/TimelineAlertas.jsx'
 import BarraEstado from './componentes/BarraEstado.jsx'
-import useWebSocket from './hooks/useWebSocket.js'
+import useMockData from './hooks/useMockData.js'
 
 function App() {
-  const [nodos, setNodos] = useState([])
-  const [alertas, setAlertas] = useState([])
-  const socketRef = useRef(null)
-  const [conectado, setConectado] = useState(false)
+  const [autenticado, setAutenticado] = useState(false)
+  const { nodos, alertas, conectado } = useMockData()
 
-  useEffect(() => {
-    fetch('/api/nodos')
-      .then(r => r.json())
-      .then(setNodos)
-    fetch('/api/alertas')
-      .then(r => r.json())
-      .then(setAlertas)
-  }, [])
-
-  useEffect(() => {
-    const socket = useWebSocket()
-    socketRef.current = socket
-
-    socket.on('connect', () => setConectado(true))
-    socket.on('disconnect', () => setConectado(false))
-
-    socket.on('nuevo-evento', (evento) => {
-      setNodos(prev => {
-        const copia = prev.filter(n => n.nodo !== evento.nodo)
-        return [evento, ...copia]
-      })
-      if (evento.tipo === 'alerta') {
-        setAlertas(prev => [evento, ...prev].slice(0, 100))
-      }
-    })
-
-    return () => socket.close()
-  }, [])
+  if (!autenticado) return <Login onLogin={() => setAutenticado(true)} />
 
   return (
     <div className="app">
