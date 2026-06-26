@@ -20,7 +20,7 @@ function App() {
   const [autenticado, setAutenticado] = useState(false)
   const [path, navigate] = useRouter()
   const [nodoSeleccionado, setNodoSeleccionado] = useState(null)
-  const { nodos, alertas, conectado, nodosInfo, simular } = useMockData()
+  const { nodos, alertas, conectado, nodosInfo, gateway, simular } = useMockData()
 
   const tabActual = path === '/' ? 'dashboard' : path.slice(1)
   const tabValido = TABS.find(t => t.id === tabActual)
@@ -77,7 +77,7 @@ function App() {
             <DashboardStats nodos={nodos} alertas={alertas} />
             <section style={{ marginTop: '1.5rem' }}>
               <h2 className="seccion-titulo">Ubicación de nodos</h2>
-              <MapaNodos nodos={nodos} nodosInfo={nodosInfo} onSeleccionar={setNodoSeleccionado} />
+              <MapaNodos nodos={nodos} nodosInfo={nodosInfo} gateway={gateway} onSeleccionar={setNodoSeleccionado} />
             </section>
           </>
         )}
@@ -92,6 +92,8 @@ function App() {
       {nodoSeleccionado && (
         <DetalleNodo
           nodo={nodos.find(n => n.nodo === nodoSeleccionado)}
+          nodosInfo={nodosInfo}
+          gateway={gateway}
           onCerrar={() => setNodoSeleccionado(null)}
         />
       )}

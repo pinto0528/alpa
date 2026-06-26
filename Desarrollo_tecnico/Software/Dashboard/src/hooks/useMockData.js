@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react'
 
+const GATEWAY = { nodo: 'Gateway', nombre: 'Gateway Principal', lat: -26.9200, lng: -65.3400 }
+
 const NODOS = [
-  { nodo: 'Nodo-001', nombre: 'Sector Norte', lat: -12.046, lng: -77.042 },
-  { nodo: 'Nodo-002', nombre: 'Sector Este', lat: -12.056, lng: -77.032 },
-  { nodo: 'Nodo-003', nombre: 'Sector Oeste', lat: -12.036, lng: -77.052 },
-  { nodo: 'Nodo-004', nombre: 'Sector Sur', lat: -12.066, lng: -77.022 },
+  { nodo: 'Nodo-001', nombre: 'Sector Norte', lat: -26.9110, lng: -65.3400 },
+  { nodo: 'Nodo-002', nombre: 'Sector Este', lat: -26.9200, lng: -65.3300 },
+  { nodo: 'Nodo-003', nombre: 'Sector Oeste', lat: -26.9200, lng: -65.3500 },
+  { nodo: 'Nodo-004', nombre: 'Sector Sur', lat: -26.9290, lng: -65.3400 },
 ]
+
+export function distanciaKm(lat1, lng1, lat2, lng2) {
+  const R = 6371
+  const dLat = (lat2 - lat1) * Math.PI / 180
+  const dLng = (lng2 - lng1) * Math.PI / 180
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+}
 
 function rand(min, max) {
   return +(min + Math.random() * (max - min)).toFixed(1)
@@ -16,7 +26,6 @@ let idCounter = 0
 function generarEvento(nodosPrev) {
   const base = NODOS[Math.floor(Math.random() * NODOS.length)]
   const prev = nodosPrev.find(n => n.nodo === base.nodo) || {}
-
   const temp = prev.temperatura !== undefined
     ? Math.max(15, Math.min(60, prev.temperatura + rand(-3, 3)))
     : rand(20, 35)
@@ -86,5 +95,5 @@ export default function useMockData() {
     })
   }
 
-  return { nodos, alertas, conectado: true, nodosInfo: NODOS, simular }
+  return { nodos, alertas, conectado: true, nodosInfo: NODOS, gateway: GATEWAY, simular }
 }
