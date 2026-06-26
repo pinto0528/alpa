@@ -11,7 +11,7 @@ export default function MapaNodos({ nodos, nodosInfo, gateway, onSeleccionar }) 
     if (!containerRef.current || mapRef.current) return
 
     const map = L.map(containerRef.current, {
-      center: [-26.890, -65.000],
+      center: [-26.9123, -65.2301],
       zoom: 14,
       zoomControl: true,
     })
