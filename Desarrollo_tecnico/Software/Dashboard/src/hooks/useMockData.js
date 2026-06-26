@@ -16,8 +16,17 @@ let idCounter = 0
 function generarEvento(nodosPrev) {
   const base = NODOS[Math.floor(Math.random() * NODOS.length)]
   const prev = nodosPrev.find(n => n.nodo === base.nodo) || {}
+
+  const roll = Math.random()
+  let salto = 0
+  if (roll < 0.08) {
+    salto = rand(18, 30)
+  } else if (roll < 0.18) {
+    salto = rand(10, 18)
+  }
+
   const temp = prev.temperatura !== undefined
-    ? Math.max(15, Math.min(60, prev.temperatura + rand(-3, 3)))
+    ? Math.max(15, Math.min(60, prev.temperatura + rand(-3, 3) + salto))
     : rand(20, 35)
   const flama = temp > 45 ? 1 : 0
   const humo = temp > 40 || flama ? 1 : 0
