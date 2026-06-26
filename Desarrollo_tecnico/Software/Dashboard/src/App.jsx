@@ -6,6 +6,7 @@ import PanelResumen from './componentes/PanelResumen.jsx'
 import TimelineAlertas from './componentes/TimelineAlertas.jsx'
 import DetalleNodo from './componentes/DetalleNodo.jsx'
 import BarraEstado from './componentes/BarraEstado.jsx'
+import PanelSimulacion from './componentes/PanelSimulacion.jsx'
 import useMockData from './hooks/useMockData.js'
 import useRouter from './hooks/useRouter.js'
 
@@ -19,7 +20,7 @@ function App() {
   const [autenticado, setAutenticado] = useState(false)
   const [path, navigate] = useRouter()
   const [nodoSeleccionado, setNodoSeleccionado] = useState(null)
-  const { nodos, alertas, conectado, nodosInfo } = useMockData()
+  const { nodos, alertas, conectado, nodosInfo, simular } = useMockData()
 
   const tabActual = path === '/' ? 'dashboard' : path.slice(1)
   const tabValido = TABS.find(t => t.id === tabActual)
@@ -94,6 +95,7 @@ function App() {
           onCerrar={() => setNodoSeleccionado(null)}
         />
       )}
+      <PanelSimulacion nodosInfo={nodosInfo} simular={simular} />
     </div>
   )
 }

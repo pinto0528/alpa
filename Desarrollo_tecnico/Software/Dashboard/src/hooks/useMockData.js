@@ -68,5 +68,31 @@ export default function useMockData() {
     return () => clearInterval(intervalo)
   }, [])
 
-  return { nodos, alertas, conectado: true, nodosInfo: NODOS }
+  function simular(tipo, nodoId) {
+    const ids = nodoId ? [nodoId] : [NODOS[Math.floor(Math.random() * NODOS.length)].nodo]
+    setNodos(prev => {
+      let nuevos = [...prev]
+      for (const id of ids) {
+        const base = NODOS.find(n => n.nodo === id)
+        const evento = {
+          _id: String(++idCounter),
+          nodo: id,
+          temperatura: tipo === 'critico' ? rand(55, 58) : tipo === 'moderado' ? rand(42, 47) : rand(23, 28),
+          flama: tipo === 'critico' ? 1 : 0,
+          humo: tipo === 'critico' || tipo === 'moderado' ? 1 : 0,
+          tipo: tipo === 'normal' ? 'status' : 'alerta',
+          timestamp: new Date().toISOString(),
+        }
+        nuevos = [evento, ...nuevos.filter(n => n.nodo !== id)]
+        if (evento.tipo === 'alerta') {
+          setAlertas(aPrev => [evento, ...aPrev.filter(a => a.nodo !== id)].slice(0, 50))
+        } else {
+          setAlertas(aPrev => aPrev.filter(a => a.nodo !== id))
+        }
+      }
+      return nuevos
+    })
+  }
+
+  return { nodos, alertas, conectado: true, nodosInfo: NODOS, simular }
 }

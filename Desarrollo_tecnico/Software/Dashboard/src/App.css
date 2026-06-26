@@ -439,6 +439,107 @@ body {
   color: #2e7d32;
 }
 
+.simulacion-flotante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #911B1E;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(145,27,30,0.35);
+  transition: transform 0.2s;
+  z-index: 900;
+}
+
+.simulacion-flotante:hover {
+  transform: scale(1.1);
+}
+
+.simulacion-panel {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  background: #fff;
+  border: 1px solid #d4d4d0;
+  border-radius: 12px;
+  padding: 16px;
+  width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  z-index: 900;
+}
+
+.simulacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.simulacion-cerrar {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #999;
+  cursor: pointer;
+}
+
+.simulacion-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d4d4d0;
+  border-radius: 6px;
+  font: 400 13px system-ui, sans-serif;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.simulacion-select:focus {
+  border-color: #911B1E;
+}
+
+.simulacion-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.simulacion-btn {
+  padding: 8px 12px;
+  border: 1px solid #d4d4d0;
+  border-radius: 6px;
+  font: 500 13px system-ui, sans-serif;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.simulacion-btn:hover {
+  border-color: #911B1E;
+}
+
+.simulacion-btn.btn-critico:hover {
+  background: rgba(145,27,30,0.06);
+  border-color: #911B1E;
+}
+
+.simulacion-btn.btn-moderado:hover {
+  background: rgba(212,160,23,0.06);
+  border-color: #d4a017;
+}
+
+.simulacion-btn.btn-normal:hover {
+  background: rgba(46,125,50,0.06);
+  border-color: #2e7d32;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
