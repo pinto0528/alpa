@@ -16,8 +16,8 @@ export default function MapaNodos({ nodos, nodosInfo, gateway, onSeleccionar }) 
       zoomControl: true,
     })
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; <a href="https://esri.com">ESRI</a>',
       maxZoom: 19,
     }).addTo(map)
 

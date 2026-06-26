@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react'
 const GATEWAY = { nodo: 'Gateway', nombre: 'Gateway Principal', lat: -26.912265, lng: -65.230117 }
 
 const NODOS = [
-  { nodo: 'Nodo-001', nombre: 'Sector Norte', lat: -26.903265, lng: -65.230117 },
-  { nodo: 'Nodo-002', nombre: 'Sector Este', lat: -26.912265, lng: -65.220117 },
-  { nodo: 'Nodo-003', nombre: 'Sector Oeste', lat: -26.912265, lng: -65.240117 },
-  { nodo: 'Nodo-004', nombre: 'Sector Sur', lat: -26.921265, lng: -65.230117 },
+  { nodo: 'Nodo-001', nombre: 'Sector Norte', lat: -26.910015, lng: -65.230117 },
+  { nodo: 'Nodo-002', nombre: 'Sector Este', lat: -26.912265, lng: -65.227617 },
+  { nodo: 'Nodo-003', nombre: 'Sector Oeste', lat: -26.912265, lng: -65.232617 },
+  { nodo: 'Nodo-004', nombre: 'Sector Sur', lat: -26.914515, lng: -65.230117 },
 ]
 
 export function distanciaKm(lat1, lng1, lat2, lng2) {
