@@ -1,9 +1,9 @@
 export default function DashboardStats({ nodos, alertas }) {
-  const alertasActivas = alertas.filter(a => a.tipo === 'alerta').length
+  const enAlerta = nodos.filter(n => n.tipo === 'alerta')
   const tempPromedio = nodos.length
     ? (nodos.reduce((s, n) => s + n.temperatura, 0) / nodos.length).toFixed(1)
     : '—'
-  const riesgo = alertasActivas > 2 ? 'crítico' : alertasActivas > 0 ? 'moderado' : 'mínimo'
+  const riesgo = enAlerta.length > 1 ? 'crítico' : enAlerta.length === 1 ? 'moderado' : 'mínimo'
   const riesgoClase = riesgo === 'crítico' ? 'rojo' : riesgo === 'moderado' ? 'ambar' : 'verde'
 
   return (

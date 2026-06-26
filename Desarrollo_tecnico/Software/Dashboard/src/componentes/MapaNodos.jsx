@@ -14,11 +14,11 @@ export default function MapaNodos({ nodos, nodosInfo, onSeleccionar }) {
         {nodosInfo.map(info => {
           const n = nodos.find(x => x.nodo === info.nodo)
           const { x, y } = posToXY(info.lat, info.lng)
-          const alerta = n && n.tipo === 'alerta'
+          const color = n?.flama ? '#911B1E' : n?.humo ? '#d4a017' : '#2e7d32'
           return (
             <g key={info.nodo} onClick={() => onSeleccionar?.(info.nodo)} className="mapa-nodo">
-              <circle cx={x} cy={y} r={alerta ? 18 : 14} fill={alerta ? '#911B1E' : '#2e7d32'} opacity="0.15" />
-              <circle cx={x} cy={y} r={alerta ? 12 : 10} fill={alerta ? '#911B1E' : '#2e7d32'} />
+              <circle cx={x} cy={y} r={n?.flama ? 18 : 14} fill={color} opacity="0.15" />
+              <circle cx={x} cy={y} r={n?.flama ? 12 : 10} fill={color} />
               <text x={x} y={y + 28} textAnchor="middle" fontSize="11" fill="#333" fontWeight="600">{info.nombre}</text>
             </g>
           )
