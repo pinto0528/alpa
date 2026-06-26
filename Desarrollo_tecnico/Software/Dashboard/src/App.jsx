@@ -1,13 +1,24 @@
 import { useState } from 'react'
 import Login from './componentes/Login.jsx'
+import DashboardStats from './componentes/DashboardStats.jsx'
+import MapaNodos from './componentes/MapaNodos.jsx'
 import PanelResumen from './componentes/PanelResumen.jsx'
 import TimelineAlertas from './componentes/TimelineAlertas.jsx'
+import DetalleNodo from './componentes/DetalleNodo.jsx'
 import BarraEstado from './componentes/BarraEstado.jsx'
 import useMockData from './hooks/useMockData.js'
 
+const TABS = [
+  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'nodos', label: 'Nodos' },
+  { id: 'alertas', label: 'Alertas' },
+]
+
 function App() {
   const [autenticado, setAutenticado] = useState(false)
-  const { nodos, alertas, conectado } = useMockData()
+  const [tab, setTab] = useState('dashboard')
+  const [nodoSeleccionado, setNodoSeleccionado] = useState(null)
+  const { nodos, alertas, conectado, nodosInfo } = useMockData()
 
   if (!autenticado) return <Login onLogin={() => setAutenticado(true)} />
 
@@ -19,13 +30,10 @@ function App() {
             <defs>
               <mask id="cutout">
                 <rect x="140" y="30" width="320" height="190" fill="white" />
-                <text x="300" y="185" font-family="'Playfair Display', Georgia, serif"
-                      font-weight="700" font-size="70" text-anchor="middle"
-                      letter-spacing="0" fill="black">
-                  <tspan>A</tspan>
-                  <tspan dx="4">L</tspan>
-                  <tspan dx="0">P</tspan>
-                  <tspan dx="-2">A</tspan>
+                <text x="300" y="185" fontFamily="'Playfair Display', Georgia, serif"
+                      fontWeight="700" fontSize="70" textAnchor="middle"
+                      letterSpacing="0" fill="black">
+                  <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
                 </text>
               </mask>
             </defs>
@@ -40,12 +48,44 @@ function App() {
             <span className="tagline">Cuidamos tu campo</span>
           </div>
         </div>
-        <BarraEstado conectado={conectado} cantidad={nodos.length} />
+        <div className="header-right">
+          <BarraEstado conectado={conectado} cantidad={nodos.length} />
+          <button className="btn-logout" onClick={() => setAutenticado(false)}>Salir</button>
+        </div>
       </header>
+
+      <nav className="tabs">
+        {TABS.map(t => (
+          <button key={t.id} className={`tab ${tab === t.id ? 'activo' : ''}`} onClick={() => setTab(t.id)}>
+            {t.label}
+          </button>
+        ))}
+      </nav>
+
       <main>
-        <PanelResumen nodos={nodos} />
-        <TimelineAlertas alertas={alertas} />
+        {tab === 'dashboard' && (
+          <>
+            <DashboardStats nodos={nodos} alertas={alertas} />
+            <section style={{ marginTop: '1.5rem' }}>
+              <h2 className="seccion-titulo">Ubicación de nodos</h2>
+              <MapaNodos nodos={nodos} nodosInfo={nodosInfo} onSeleccionar={setNodoSeleccionado} />
+            </section>
+          </>
+        )}
+        {tab === 'nodos' && (
+          <PanelResumen nodos={nodos} onSeleccionar={setNodoSeleccionado} />
+        )}
+        {tab === 'alertas' && (
+          <TimelineAlertas alertas={alertas} />
+        )}
       </main>
+
+      {nodoSeleccionado && (
+        <DetalleNodo
+          nodo={nodos.find(n => n.nodo === nodoSeleccionado)}
+          onCerrar={() => setNodoSeleccionado(null)}
+        />
+      )}
     </div>
   )
 }

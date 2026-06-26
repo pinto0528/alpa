@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const NODOS = [
-  { nodo: 'Nodo-001', nombre: 'Sector Norte' },
-  { nodo: 'Nodo-002', nombre: 'Sector Este' },
-  { nodo: 'Nodo-003', nombre: 'Sector Oeste' },
-  { nodo: 'Nodo-004', nombre: 'Sector Sur' },
+  { nodo: 'Nodo-001', nombre: 'Sector Norte', lat: -12.046, lng: -77.042 },
+  { nodo: 'Nodo-002', nombre: 'Sector Este', lat: -12.056, lng: -77.032 },
+  { nodo: 'Nodo-003', nombre: 'Sector Oeste', lat: -12.036, lng: -77.052 },
+  { nodo: 'Nodo-004', nombre: 'Sector Sur', lat: -12.066, lng: -77.022 },
 ]
 
 function rand(min, max) {
@@ -57,5 +57,5 @@ export default function useMockData() {
     return () => clearInterval(intervalo)
   }, [])
 
-  return { nodos, alertas, conectado: true }
+  return { nodos, alertas, conectado: true, nodosInfo: NODOS }
 }
