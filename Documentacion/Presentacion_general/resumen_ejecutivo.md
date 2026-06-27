@@ -41,7 +41,7 @@ Sistema IoT de bajo costo que detecta incendios en etapa incipiente (<5 minutos)
 
 ## 6. Estado actual
 
-Prototipo funcional (MVP temprano). Pruebas de comunicación LoRa exitosas, detección de flama hasta 50 cm, más de 6 horas de autonomía. Validación con 4 entrevistas a stakeholders (productor, aseguradora, bomberos, seguridad e higiene). Próximo hito: piloto de campo con 10 unidades.
+Prototipo funcional (MVP temprano). Pruebas de comunicación LoRa exitosas, detección de flama hasta 50 cm, >24 horas de autonomía. Validación con 4 entrevistas a stakeholders (productor, aseguradora, bomberos, seguridad e higiene). Próximo hito: piloto de campo con 10 unidades.
 
 ## 7. Contacto
 

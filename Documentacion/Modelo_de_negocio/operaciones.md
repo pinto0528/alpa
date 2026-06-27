@@ -24,7 +24,7 @@
 
 | Recurso | Especificación | Propósito |
 |---------|---------------|-----------|
-| **Nodo sensor** | ESP32 + LoRa SX1276 + sensores (humo, temperatura, llama) + panel solar 5W + batería LiPo + carcasa IP65 | Detección en campo |
+| **Nodo sensor** | ESP32 + LoRa SX1262 + sensores (humo, temperatura, llama) + panel solar 5W + batería LiPo + carcasa IP65 | Detección en campo |
  | **Gateway** | ESP32 + concentrador LoRaWAN + antena + batería/cargador solar + módulo 4G opcional | Recepción de alertas y comunicación a la nube |
 | **Dashboard web** | Panel de control en tiempo real con mapa, historial de eventos, alertas y reportes | Monitoreo del productor y la aseguradora |
 | **Backend / Cloud** | Servidor cloud (API REST + base de datos + servicio de alertas) | Procesamiento y almacenamiento de eventos |

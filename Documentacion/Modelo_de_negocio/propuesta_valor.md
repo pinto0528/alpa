@@ -99,7 +99,7 @@ Un sistema autónomo de detección temprana de incendios que alerta al productor
 |-----------|------------------|----------------------|---------------------|--------------------------|-------------------|
 | **Detección automática** | No | Sí (focos de calor) | Sí (cámaras) | Sí (sensores IoT) | **Sí — sensores multi-parámetro** |
 | **Etapa de detección** | Cuando hay humo visible | Fuego ya desarrollado | Fuego ya desarrollado | Depende del sensor | **Etapa incipiente** |
-| **Funciona sin conectividad** | Sí (depende de persona) | No (requiere internet) | No (requiere red) | No (requiere red) | **Sí — LoRa/LoRaWAN** |
+| **Funciona sin conectividad** | Sí (depende de persona) | No (requiere internet) | No (requiere red) | No (requiere red) | **Nodo→Gateway: Sí (LoRa) / Gateway→Nube: WiFi o 4G** |
 | **Autonomía energética** | N/A | N/A | No (requiere red) | Limitada | **Sí — panel solar + batería** |
 | **Alerta directa al productor** | No | No (organismos) | No (central de monitoreo) | Sí (app/web) | **Sí — SMS/radio/LoRa** |
 | **Cobertura 24/7** | No (solo de día) | Sí (pasada satelital) | Sí | Sí | **Sí** |

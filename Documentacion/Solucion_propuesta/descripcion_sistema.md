@@ -113,7 +113,7 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 - **PanelResumen:** Tarjetas por nodo con temperatura, flama, humo y última actualización
 - **TimelineAlertas:** Lista cronológica de alertas con motivo (flama/humo/temperatura elevada)
 
-**Tema visual:** Dark mode (fondo `#0f172a`), tarjetas en `#1e293b`, alertas con borde rojo y animación pulsante.
+**Tema visual:** Light mode (fondo `#F5F5F5`), tarjetas en blanco, acentos en `#911B1E`, alertas con borde rojo y animación pulsante.
 
 ## 4. Flujo de datos
 

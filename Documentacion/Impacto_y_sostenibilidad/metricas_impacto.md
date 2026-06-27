@@ -43,7 +43,8 @@ Los valores de las tablas anteriores se estimaron a partir de:
 
 ### Supuestos
 
-- Cada productor medio maneja 500 ha.
+- Cada productor medio maneja 500 ha (promedio regional).
+- Para el cálculo de pérdidas se utiliza el campo de referencia de 650 ha del INTA/FAO, que representa un productor tipo de la zona núcleo. La diferencia (500 vs 650 ha) se debe a que el promedio incluye productores más pequeños; el campo de referencia refleja un establecimiento con densidad de activos suficiente para que un incendio represente pérdida significativa.
 - La tasa de incidencia de incendios en la región es de al menos 1 evento grave cada 2 temporadas.
 - El sistema reduce el tiempo de detección de ~35 min (promedio actual según entrevistados) a <5 min, permitiendo actuar en la etapa incipiente.
 - Se considera productor alcanzado aquel que tiene al menos un nodo sensor instalado y activo.
@@ -101,10 +102,10 @@ ROI = (Pérdidas evitadas - Costo total del sistema) / Costo total del sistema
 |---|---|
 | Hardware (nodo sensor + gateway) | 250 |
 | Instalación y configuración (único) | 50 |
-| Suscripción anual SaaS | 120 |
+| Suscripción anual SaaS | 60 |
 | Reposición y mantenimiento anual | 30 |
-| **Total por temporada (año 1)** | **450** |
-| **Total por temporada (año 2-3, sin hardware)** | **150** |
+| **Total por temporada (año 1)** | **390** |
+| **Total por temporada (año 2-3, sin hardware)** | **90** |
 
 **Pérdidas evitadas por evento grave**:
 

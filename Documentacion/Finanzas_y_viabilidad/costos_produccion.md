@@ -13,8 +13,8 @@ El nodo sensor es la unidad autónoma que se despliega directamente en el terren
 | Componente | Especificación Técnica Seleccionada | Costo Unitario (USD) |
 | --- | --- | --- |
 | **Microcontrolador + PCB** | ESP32 + Placa de circuito impreso de diseño propio | USD 15.00 |
-| **Módulo LoRa** | Transmisor de largo alcance (SX1276) a 915 MHz | USD 12.00 |
-| **Sensores** | Módulo integrado de humo (gases CO/MQ) + Temperatura y Humedad | USD 18.00 |
+| **Módulo LoRa** | Transmisor de largo alcance (SX1262) a 915 MHz | USD 12.00 |
+| **Sensores** | Sensor digital 2-canales + GP2Y1014AU0F (óptico IR) + DS18B20 + KY-026 | USD 18.00 |
 | **Sistema Fotovoltaico** | Panel solar de silicio monocristalino (5W / 5V) | USD 15.00 |
 | **Almacenamiento de Energía** | Pack de baterías LiPo (18650) con circuito de protección | USD 10.00 |
 | **Gabinete Estanco** | Carcasa con certificación de estanqueidad IP65 y filtro UV | USD 20.00 |

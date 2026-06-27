@@ -92,7 +92,7 @@ Sin cambios en hardware (el SX1262 es multibanda).
 | Sensores (DS18B20, KY-026, humo) | MercadoLibre, tienda local | DigiKey, Mouser (por lote) |
 | PCB | No aplica (protoboard) | JLCPCB, PCBWay |
 | Batería 18650 + TP4056 | Tienda local | BatterySpace, Alibaba |
-| Caja / gabinete | No aplica | Caja estanca ABS 3D打印 o inyectada |
+| Caja / gabinete | No aplica | Caja estanca ABS impresa en 3D o inyectada |
 
 ### Tiempo de producción estimado
 

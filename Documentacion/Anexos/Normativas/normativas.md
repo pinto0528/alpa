@@ -48,7 +48,7 @@ Establece los presupuestos mínimos para el logro de una gestión sustentable de
 
 ### Regulaciones específicas para el sector agrícola
 
-- Temporada de alto riesgo: mayo a diciembre (coincide con la zafra y cosecha de caña de azúcar)
+- Temporada de alto riesgo: mayo a diciembre (pico junio-octubre, coincidiendo con la zafra y cosecha de caña de azúcar)
 - Prohibición de quema no controlada de rastrojos
 - Obligación de mantener cortafuegos en propiedades rurales
 

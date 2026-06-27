@@ -54,7 +54,7 @@ Proyecto de detección temprana de incendios para productores agropecuarios en z
 
 ## Convenciones
 
-- Los documentos se redactan en español (argentino).
+- Los documentos se redactan en español.
 - Usar Markdown para documentación textual.
 - Los entregables del concurso se versionan en `Documentacion/Entregables_concurso/`.
 - Paleta ALPA: `#911B1E` (rojo inca), `#D4B896` (lino crudo), `#222222` (pizarra), `#F5F5F5` (hueso).

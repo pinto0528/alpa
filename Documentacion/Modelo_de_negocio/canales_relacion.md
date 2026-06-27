@@ -84,7 +84,7 @@ El sistema se distribuye a través de tres canales principales, segmentados seg�
 
 | Etapa | Actividad | Métrica de Éxito |
 |-------|-----------|------------------|
-| **Lanzamiento (Año 1)** | Demostraciones gratuitas en 10 campos de productores referentes en Tucumán. Charlas en 3 cooperativas agrícolas. Presentación en 2 ingenios azucareros. | 10 instalaciones piloto, 25 kits vendidos |
+| **Lanzamiento (Año 1)** | Demostraciones gratuitas en 10 campos de productores referentes en Tucumán. Charlas en 3 cooperativas agrícolas. Presentación en 2 ingenios azucareros. | 10 instalaciones piloto, 35 kits vendidos |
 | **Crecimiento (Año 2)** | Programa de referidos con descuento. Alianza con 1 aseguradora. Presencia en 2 ferias agrícolas del NOA. | 85 kits vendidos, 30% por canal aseguradora |
 | **Expansión (Año 3)** | Expansión a Córdoba y Litoral. 2 aseguradoras activas. Distribución en cooperativas de 4 provincias. | 190 kits vendidos, 50% por canal aseguradora |
 
