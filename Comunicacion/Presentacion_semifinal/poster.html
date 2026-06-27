@@ -6,7 +6,7 @@
 <title>ALPA · Póster Semifinal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -22,301 +22,430 @@
     width: 800px;
     height: 1100px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    padding: 3rem 2.5rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
     display: flex;
     flex-direction: column;
-    position: relative;
     overflow: hidden;
   }
-  .poster::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 8px;
+  /* Top bar */
+  .top-bar {
     background: #911B1E;
-  }
-  .logo-section {
+    padding: 1.2rem 2.5rem;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid #D4B896;
-    margin-bottom: 1.5rem;
+    gap: 2rem;
+    flex-shrink: 0;
   }
-  .logo-svg { width: 320px; flex-shrink: 0; }
-  .logo-tagline {
-    color: #911B1E;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
+  .top-bar .logo-svg { width: 220px; flex-shrink: 0; }
+  .top-bar .top-text { }
+  .top-bar .top-text .tagline {
+    color: #D4B896;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 600;
   }
-  .grid-2col {
+  .top-bar .top-text .evento {
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+  }
+  .top-bar .top-text .subtitulo {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.65rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Body grid: 2 columnas */
+  .body-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 0;
     flex: 1;
   }
-  .left-col {
+  .col-left {
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
-  .right-col {
+  .col-right {
+    padding: 1.5rem 2.5rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
+    gap: 1.5rem;
   }
-  .diagram-box {
-    background: #F5F5F5;
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid #D4B896;
-  }
-  .diagram-box h3 {
+
+  /* Sections */
+  .section h3 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #911B1E;
-    margin-bottom: 1rem;
-    text-align: center;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid #D4B896;
+    padding-bottom: 0.3rem;
+    text-transform: uppercase;
   }
-  .flow {
+  .section p, .section li {
+    font-size: 0.72rem;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  /* Problema stats */
+  .prob-stats { display: flex; flex-direction: column; gap: 0.6rem; }
+  .prob-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .prob-row .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #911B1E;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 70px;
+  }
+  .prob-row .desc {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.3;
+  }
+  .prob-row .src {
+    display: block;
+    font-size: 0.55rem;
+    color: #999;
+    margin-top: 0.1rem;
+  }
+
+  /* Flow diagram */
+  .flow { display: flex; flex-direction: column; gap: 0.3rem; }
+  .flow-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .flow-item {
-    background: #fff;
-    border: 2px solid #911B1E;
-    border-radius: 8px;
+    gap: 0.6rem;
+    background: #F9F6F0;
+    border-radius: 6px;
     padding: 0.5rem 0.8rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #222;
-    text-align: center;
-    min-width: 70px;
+    border-left: 3px solid #D4B896;
   }
   .flow-item.highlight {
     background: #911B1E;
-    color: #fff;
+    border-left-color: #911B1E;
   }
-  .flow-arrow {
-    font-size: 1.2rem;
-    color: #911B1E;
+  .flow-item.highlight .f-label,
+  .flow-item.highlight .f-desc { color: #fff; }
+  .flow-item .f-label {
     font-weight: 700;
-  }
-  .stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-  }
-  .stat-card {
-    background: #F5F5F5;
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    border: 1px solid #D4B896;
-  }
-  .stat-val {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #911B1E;
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-  .stat-label {
-    font-size: 0.65rem;
-    color: #666;
-    margin-top: 0.3rem;
-    line-height: 1.3;
-  }
-  .feature-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .feature-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.7rem;
     color: #222;
+    min-width: 55px;
   }
-  .feature-list li::before {
-    content: '✓';
-    width: 24px;
-    height: 24px;
+  .flow-item .f-desc {
+    font-size: 0.62rem;
+    color: #666;
+  }
+  .flow-arr {
+    font-size: 0.7rem;
+    color: #911B1E;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  /* Features */
+  .feat-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .feat-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.7rem;
+    color: #333;
+    line-height: 1.4;
+  }
+  .feat-list li .check {
+    width: 18px; height: 18px;
     background: #911B1E;
     color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
+    font-weight: 700;
     flex-shrink: 0;
+    margin-top: 0.1rem;
   }
-  .qr-section {
-    background: #F5F5F5;
-    border-radius: 12px;
-    padding: 1.2rem;
+
+  /* Tech specs */
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .spec-item {
+    background: #F9F6F0;
+    border-radius: 6px;
+    padding: 0.6rem;
     text-align: center;
-    border: 1px solid #D4B896;
   }
-  .qr-placeholder {
-    width: 100px;
-    height: 100px;
-    background: #fff;
-    border: 2px dashed #911B1E;
-    border-radius: 8px;
-    margin: 0 auto 0.5rem;
+  .spec-item .s-val {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #911B1E;
+  }
+  .spec-item .s-label {
+    font-size: 0.55rem;
+    color: #666;
+    margin-top: 0.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Team row */
+  .team-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+  }
+  .tm-item {
+    text-align: center;
+    background: #F9F6F0;
+    border-radius: 6px;
+    padding: 0.5rem;
+  }
+  .tm-item .inicial {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #911B1E;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.55rem;
-    color: #999;
-    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin: 0 auto 0.3rem;
   }
-  .qr-label {
+  .tm-item .nombre {
     font-size: 0.6rem;
-    color: #666;
     font-weight: 600;
+    color: #222;
   }
-  .footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 2px solid #D4B896;
+  .tm-item .rol {
+    font-size: 0.5rem;
+    color: #888;
+    margin-top: 0.1rem;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    background: #222;
+    padding: 0.8rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
   }
-  .footer-logos {
+  .bottom-bar .bb-left {
     display: flex;
-    gap: 2rem;
     align-items: center;
+    gap: 1.5rem;
   }
-  .footer-text {
-    font-size: 0.65rem;
+  .bottom-bar .bb-text {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .bottom-bar .bb-text strong { color: #D4B896; }
+  .bottom-bar .qr-place {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .bottom-bar .qr-place .qr-box {
+    width: 40px; height: 40px;
+    background: #fff;
+    border: 2px dashed #D4B896;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.35rem;
     color: #999;
-  }
-  .footer-text strong {
-    color: #911B1E;
-  }
-  .title-area {
     text-align: center;
-    margin-bottom: 0.5rem;
+    line-height: 1.1;
   }
-  .title-area h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.3rem;
-    color: #911B1E;
+  .bottom-bar .qr-place .qr-label {
+    font-size: 0.5rem;
+    color: rgba(255,255,255,0.5);
   }
-  .title-area p {
-    font-size: 0.7rem;
-    color: #666;
-  }
+
   @media print {
     body { padding: 0; background: #fff; }
-    .poster { box-shadow: none; border-radius: 0; width: 800px; height: 1100px; }
+    .poster { box-shadow: none; border-radius: 0; }
   }
 </style>
 </head>
 <body>
 <div class="poster">
-  <div class="logo-section">
+
+  <!-- Top bar -->
+  <div class="top-bar">
     <svg class="logo-svg" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <mask id="cutout">
+        <mask id="pmask">
           <rect x="140" y="30" width="320" height="190" fill="white"/>
           <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" letter-spacing="0" fill="black">
             <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
           </text>
         </mask>
       </defs>
-      <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
-      <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
-      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout)"/>
-      <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
-      <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="40" y="55" width="25" height="140" fill="#fff"/>
+      <rect x="90" y="55" width="25" height="140" fill="#fff"/>
+      <rect x="140" y="30" width="320" height="190" fill="#fff" mask="url(#pmask)"/>
+      <rect x="485" y="55" width="25" height="140" fill="#fff"/>
+      <rect x="535" y="55" width="25" height="140" fill="#fff"/>
     </svg>
-    <div>
-      <div class="logo-tagline">Cuidamos tu campo</div>
-      <div style="font-size:0.65rem;color:#999;margin-top:0.3rem;">Sistema de Alerta de Incendios Rurales</div>
+    <div class="top-text">
+      <div class="evento">Sistema de Alerta de Incendios Rurales</div>
+      <div class="tagline">Cuidamos tu campo</div>
+      <div class="subtitulo">Semifinales EmprendeU 2026 · UTN Facultad Regional Tucumán</div>
     </div>
   </div>
 
-  <div class="title-area">
-    <h1>Semifinales EmprendeU 2026</h1>
-    <p>UTN Facultad Regional Tucumán</p>
-  </div>
+  <!-- Body -->
+  <div class="body-grid">
+    <!-- Left column -->
+    <div class="col-left">
+      <div class="section">
+        <h3>El problema</h3>
+        <div class="prob-stats">
+          <div class="prob-row">
+            <span class="num">+10.000</span>
+            <div class="desc">Incendios rurales por año en Argentina<span class="src">CPIA 2026</span></div>
+          </div>
+          <div class="prob-row">
+            <span class="num">55.870</span>
+            <div class="desc">Hectáreas quemadas en Tucumán (2025)<span class="src">EEAOC</span></div>
+          </div>
+          <div class="prob-row">
+            <span class="num">$11M</span>
+            <div class="desc">USD de pérdida máxima por campo<span class="src">INTA / FAO</span></div>
+          </div>
+        </div>
+      </div>
 
-  <div class="grid-2col">
-    <div class="left-col">
-      <div class="diagram-box">
+      <div class="section" style="margin-top:auto;">
         <h3>¿Cómo funciona?</h3>
         <div class="flow">
-          <div class="flow-item highlight">Sensor<br>en campo</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-item">LoRa<br>915 MHz</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-item">Gateway<br>WiFi / 4G</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-item highlight">Alerta<br>en &lt;5 min</div>
-        </div>
-      </div>
-
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-val">&lt;5 min</div>
-          <div class="stat-label">Detección en etapa incipiente</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">24/7</div>
-          <div class="stat-label">Monitoreo continuo con energía solar</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">2-5 km</div>
-          <div class="stat-label">Alcance LoRa por nodo en campo abierto</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">+90%</div>
-          <div class="stat-label">Detección en etapa incipiente</div>
+          <div class="flow-item highlight">
+            <span class="f-label">🔥 Sensor</span>
+            <span class="f-desc">XIAO ESP32-S3 · LoRa SX1262 · DS18B20 · Detector humo · KY-026</span>
+          </div>
+          <div class="flow-arr">↓ Enlace LoRa 915 MHz · 2-5 km</div>
+          <div class="flow-item">
+            <span class="f-label">📡 Gateway</span>
+            <span class="f-desc">Receptor LoRa → WiFi HTTP · Bridge a servidor cloud</span>
+          </div>
+          <div class="flow-arr">↓ Internet / 4G</div>
+          <div class="flow-item">
+            <span class="f-label">☁️ Servidor</span>
+            <span class="f-desc">Express + NeDB + Socket.IO · Dashboard en tiempo real</span>
+          </div>
+          <div class="flow-arr">↓ Alerta en &lt;5 min</div>
+          <div class="flow-item highlight">
+            <span class="f-label">🚨 Productor</span>
+            <span class="f-desc">Notificación con coordenadas GPS del foco</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="right-col">
-      <ul class="feature-list">
-        <li>Funciona sin señal celular ni internet</li>
-        <li>No requiere electricidad de red</li>
-        <li>Alerta directa al productor con GPS</li>
-        <li>Panel solar + batería 18650</li>
-        <li>Comunicación LoRa 915 MHz</li>
-        <li>Dashboard en tiempo real</li>
-      </ul>
+    <!-- Right column -->
+    <div class="col-right">
+      <div class="section">
+        <h3>Ventajas</h3>
+        <ul class="feat-list">
+          <li><span class="check">✓</span>Funciona sin señal celular ni internet en campo</li>
+          <li><span class="check">✓</span>No requiere electricidad de red · Panel solar + batería 18650</li>
+          <li><span class="check">✓</span>Detección en etapa incipiente (&lt;5 min vs 3-12 h satelital)</li>
+          <li><span class="check">✓</span>Alerta directa al productor con GPS del foco</li>
+          <li><span class="check">✓</span>Dashboard con mapa satelital y alertas en vivo</li>
+          <li><span class="check">✓</span>Autonomía &gt;24 h · Escalable a 50 nodos por gateway</li>
+        </ul>
+      </div>
 
-      <div class="qr-section">
-        <div class="qr-placeholder">ESCANEA<br>Y VIVÍ EL<br>DASHBOARD<br>EN VIVO</div>
-        <div class="qr-label">Demo del sistema</div>
+      <div class="section">
+        <h3>Especificaciones técnicas</h3>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="s-val">&lt;5 min</div>
+            <div class="s-label">Detección incipiente</div>
+          </div>
+          <div class="spec-item">
+            <div class="s-val">915 MHz</div>
+            <div class="s-label">LoRa · 2-5 km alcance</div>
+          </div>
+          <div class="spec-item">
+            <div class="s-val">24/7</div>
+            <div class="s-label">Monitoreo continuo solar</div>
+          </div>
+          <div class="spec-item">
+            <div class="s-val">2 canales</div>
+            <div class="s-label">Sensor humo + óptico IR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" style="margin-top:auto;">
+        <h3>Equipo</h3>
+        <div class="team-row">
+          <div class="tm-item">
+            <div class="inicial">M</div>
+            <div class="nombre">Mario Quiroga</div>
+            <div class="rol">Full-Stack</div>
+          </div>
+          <div class="tm-item">
+            <div class="inicial">J</div>
+            <div class="nombre">Jeremías Mastafa</div>
+            <div class="rol">Firmware</div>
+          </div>
+          <div class="tm-item">
+            <div class="inicial">G</div>
+            <div class="nombre">Gonzalo Lescano</div>
+            <div class="rol">Negocio</div>
+          </div>
+          <div class="tm-item">
+            <div class="inicial">N</div>
+            <div class="nombre">Nicolás Pinto</div>
+            <div class="rol">Hardware</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="footer">
-    <div class="footer-logos">
-      <div class="footer-text">
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bb-left">
+      <div class="bb-text">
         <strong>ALPA</strong> · Cuidamos tu campo
       </div>
+      <div class="bb-text">
+        UTN Facultad Regional Tucumán · EmprendeU 2026
+      </div>
     </div>
-    <div class="footer-text">
-      UTN Facultad Regional Tucumán · EmprendeU 2026
+    <div class="qr-place">
+      <div class="qr-box">QR</div>
+      <div class="qr-label">Demo en vivo</div>
     </div>
   </div>
+
 </div>
 </body>
 </html>
