@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALPA · Presentación Semifinal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .presenter {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  }
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1920px;
+    height: 1080px;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    padding: 80px 100px;
+    overflow: hidden;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 10px;
+    background: #911B1E;
+  }
+  /* Slide 1: Portada */
+  .slide.portada {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #F5F5F5 0%, #fff 100%);
+  }
+  .slide.portada .logo-slide { width: 500px; margin-bottom: 2rem; }
+  .slide.portada h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.5rem;
+    color: #911B1E;
+    margin-bottom: 1rem;
+  }
+  .slide.portada .tagline {
+    font-size: 1.2rem;
+    color: #666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+  }
+  .slide.portada .meta {
+    font-size: 0.9rem;
+    color: #999;
+  }
+  .slide.portada .meta strong { color: #911B1E; }
+  /* Slide content */
+  .slide h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    color: #911B1E;
+    margin-bottom: 1.5rem;
+  }
+  .slide h2 .num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #999;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .slide .sub {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  .slide .content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  /* Stats layout */
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+  }
+  .stat-big {
+    flex: 1;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #D4B896;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .stat-big .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #911B1E;
+    line-height: 1.1;
+  }
+  .stat-big .label {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+  .stat-big .src {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+  /* Comparison grid */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .comp-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #D4B896;
+  }
+  .comp-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.5rem;
+  }
+  .comp-item .bad {
+    color: #999;
+    font-size: 0.85rem;
+  }
+  .comp-item .bad::before { content: '✗ '; color: #911B1E; }
+  .gap-item {
+    background: #911B1E;
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .gap-item h4 { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+  .gap-item p { font-size: 0.9rem; opacity: 0.9; }
+  /* Diagram flow */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  .flow-node {
+    background: #fff;
+    border: 3px solid #911B1E;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    min-width: 180px;
+  }
+  .flow-node .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .flow-node .name { font-weight: 700; font-size: 1rem; color: #222; }
+  .flow-node .desc { font-size: 0.75rem; color: #666; margin-top: 0.3rem; }
+  .flow-node.highlight { background: #911B1E; }
+  .flow-node.highlight .name, .flow-node.highlight .desc { color: #fff; }
+  .flow-arr { font-size: 2rem; color: #911B1E; font-weight: 300; }
+  /* Prototype section */
+  .proto-layout {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+  }
+  .proto-col {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #D4B896;
+    text-align: center;
+  }
+  .proto-col .box {
+    width: 100%;
+    height: 200px;
+    background: #F5F5F5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    border: 2px dashed #D4B896;
+  }
+  .proto-col h4 { font-size: 1rem; color: #911B1E; margin-bottom: 0.3rem; }
+  .proto-col p { font-size: 0.8rem; color: #666; }
+  /* Team */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+  }
+  .team-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid #D4B896;
+  }
+  .team-card .avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: #F5F5F5;
+    margin: 0 auto 1rem;
+    border: 3px solid #911B1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #911B1E;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .team-card .name { font-weight: 700; font-size: 1rem; color: #222; }
+  .team-card .role { font-size: 0.8rem; color: #666; margin-top: 0.3rem; }
+  /* Close slide */
+  .slide.cierre {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .slide.cierre .logo-slide { width: 400px; margin-bottom: 2rem; }
+  .slide.cierre h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.5rem;
+    color: #911B1E;
+    margin-bottom: 1rem;
+  }
+  .slide.cierre .tagline {
+    font-size: 1rem;
+    color: #666;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  .slide.cierre .contacto {
+    font-size: 0.9rem;
+    color: #999;
+  }
+  /* Controls */
+  .controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 100;
+    background: rgba(0,0,0,0.7);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+  }
+  .controls button {
+    background: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+  .controls button:hover { border-color: #911B1E; background: #911B1E; }
+  .controls .counter {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
+  .controls .auto-btn {
+    background: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .controls .auto-btn.active { border-color: #24b410; color: #24b410; }
+</style>
+</head>
+<body>
+<div class="presenter" id="presenter">
+
+  <!-- Slide 1: Portada -->
+  <div class="slide portada active" data-slide="0">
+    <svg class="logo-slide" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <mask id="cutout0">
+          <rect x="140" y="30" width="320" height="190" fill="white"/>
+          <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" letter-spacing="0" fill="black">
+            <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
+          </text>
+        </mask>
+      </defs>
+      <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout0)"/>
+      <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
+    </svg>
+    <div class="tagline">Cuidamos tu campo</div>
+    <div class="meta">
+      Semifinales <strong>EmprendeU 2026</strong> · UTN Facultad Regional Tucumán
+    </div>
+  </div>
+
+  <!-- Slide 2: El problema -->
+  <div class="slide" data-slide="1">
+    <h2><span class="num">01</span>El problema</h2>
+    <p class="sub">Argentina registra más de 10.000 incendios rurales por año</p>
+    <div class="content">
+      <div class="stats-row">
+        <div class="stat-big">
+          <div class="num">+10.000</div>
+          <div class="label">Incendios por año en Argentina</div>
+          <div class="src">Fuente: CPIA 2026</div>
+        </div>
+        <div class="stat-big">
+          <div class="num">55.870</div>
+          <div class="label">Hectáreas quemadas en Tucumán (2025)</div>
+          <div class="src">Fuente: EEAOC</div>
+        </div>
+        <div class="stat-big">
+          <div class="num">$11M</div>
+          <div class="label">USD de pérdida máxima por campo</div>
+          <div class="src">Fuente: INTA / FAO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: El gap -->
+  <div class="slide" data-slide="2">
+    <h2><span class="num">02</span>¿Qué hay hoy?</h2>
+    <p class="sub">Ninguna solución cubre al productor individual sin conectividad</p>
+    <div class="content">
+      <div class="comp-grid">
+        <div class="comp-item">
+          <h4>Satélites (NASA FIRMS)</h4>
+          <div class="bad">Detección tardía (3-12 h de latencia)</div>
+          <div class="bad">Resolución de 375 m a 1 km</div>
+          <div class="bad">No alerta directa al productor</div>
+        </div>
+        <div class="comp-item">
+          <h4>Faros de Conservación</h4>
+          <div class="bad">Costo ~USD 500.000 por torre</div>
+          <div class="bad">Cobertura regional, no llega al productor</div>
+          <div class="bad">Requiere red eléctrica e internet</div>
+        </div>
+        <div class="comp-item">
+          <h4>Pampa 4 / Telecom IoT</h4>
+          <div class="bad">Requiere cobertura LoRaWAN o 4G</div>
+          <div class="bad">No funciona en zonas rurales profundas</div>
+          <div class="bad">Costo de suscripción elevado</div>
+        </div>
+        <div class="gap-item">
+          <h4>Ninguna funciona sin conectividad</h4>
+          <p>Ahí aparece ALPA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: La solución -->
+  <div class="slide" data-slide="3">
+    <h2><span class="num">03</span>ALPA</h2>
+    <p class="sub">Detección en &lt;5 min · Sin celular · Sin red eléctrica</p>
+    <div class="content" style="flex-direction:column;gap:2rem;">
+      <div class="flow-row">
+        <div class="flow-node">
+          <div class="icon">🔥</div>
+          <div class="name">Nodo Sensor</div>
+          <div class="desc">XIAO ESP32-S3 · LoRa · Sensores<br>Panel solar + batería</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="icon">📡</div>
+          <div class="name">LoRa 915 MHz</div>
+          <div class="desc">2-5 km alcance<br>11 bytes por paquete</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node">
+          <div class="icon">📶</div>
+          <div class="name">Gateway</div>
+          <div class="desc">LoRa → WiFi / 4G<br>Bridge a la nube</div>
+        </div>
+        <div class="flow-arr">→</div>
+        <div class="flow-node highlight">
+          <div class="icon">🚨</div>
+          <div class="name">Alerta</div>
+          <div class="desc">Dashboard + notificación<br>en menos de 5 minutos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Prototipo -->
+  <div class="slide" data-slide="4">
+    <h2><span class="num">04</span>Prototipo funcional</h2>
+    <p class="sub">MVP desarrollado y probado en laboratorio UTN</p>
+    <div class="content">
+      <div class="proto-layout">
+        <div class="proto-col">
+          <div class="box">[FOTO NODO SENSOR]</div>
+          <h4>Nodo Sensor</h4>
+          <p>XIAO ESP32-S3 + Wio-SX1262<br>DS18B20 · KY-026 · Detector humo<br>Panel 5W + Batería 18650</p>
+        </div>
+        <div class="proto-col">
+          <div class="box">[FOTO GATEWAY]</div>
+          <h4>Gateway</h4>
+          <p>XIAO ESP32-S3 + Wio-SX1262<br>Receptor LoRa → WiFi HTTP<br>Conexión a servidor cloud</p>
+        </div>
+        <div class="proto-col">
+          <div class="box">[CAPTURA DASHBOARD]</div>
+          <h4>Dashboard</h4>
+          <p>React + Vite + Socket.IO<br>Mapa satelital · Alertas en vivo<br>Panel de simulación</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: Validación -->
+  <div class="slide" data-slide="5">
+    <h2><span class="num">05</span>Validación con el territorio</h2>
+    <p class="sub">4 entrevistas con stakeholders reales de Tucumán</p>
+    <div class="content">
+      <div class="stats-row">
+        <div class="stat-big" style="border-top:4px solid #911B1E;">
+          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Productor agrícola</div>
+          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
+            "Te da una impotencia bárbara... mi verdadero terror es el limón: un fuego que cruza del cañaveral a la quinta me derrite kilómetros de mangueras"
+          </div>
+        </div>
+        <div class="stat-big" style="border-top:4px solid #911B1E;">
+          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Aseguradora</div>
+          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
+            "Si el productor tiene un sistema de monitoreo, podemos bonificar la póliza — hoy no tenemos cómo verificar si realmente hubo prevención"
+          </div>
+        </div>
+        <div class="stat-big" style="border-top:4px solid #911B1E;">
+          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Bombero voluntario</div>
+          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
+            "Si me mandan las coordenadas GPS cuando recién es una chispa, mandamos una camioneta liviana con mochilas y lo apagamos en 10 minutos"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Equipo -->
+  <div class="slide" data-slide="6">
+    <h2><span class="num">06</span>Equipo</h2>
+    <p class="sub">Estudiantes de la UTN Facultad Regional Tucumán</p>
+    <div class="content">
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar">M</div>
+          <div class="name">Mario Quiroga</div>
+          <div class="role">Full-Stack · Backend · Dashboard</div>
+        </div>
+        <div class="team-card">
+          <div class="avatar">J</div>
+          <div class="name">Jeremías Mastafa</div>
+          <div class="role">Firmware · Comunicaciones LoRa</div>
+        </div>
+        <div class="team-card">
+          <div class="avatar">G</div>
+          <div class="name">Gonzalo Lescano</div>
+          <div class="role">Negocio · Operaciones · Pitch</div>
+        </div>
+        <div class="team-card">
+          <div class="avatar">N</div>
+          <div class="name">Nicolás Pinto</div>
+          <div class="role">Hardware · Prototipado · Ensamblaje</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: Cierre -->
+  <div class="slide cierre" data-slide="7">
+    <svg class="logo-slide" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <mask id="cutout7">
+          <rect x="140" y="30" width="320" height="190" fill="white"/>
+          <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" letter-spacing="0" fill="black">
+            <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
+          </text>
+        </mask>
+      </defs>
+      <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout7)"/>
+      <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
+      <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
+    </svg>
+    <div class="tagline">Cuidamos tu campo</div>
+    <div class="contacto">
+      EmprendeU 2026 · UTN Facultad Regional Tucumán
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="prevBtn">←</button>
+  <span class="counter" id="counter">1 / 8</span>
+  <button id="nextBtn">→</button>
+  <button class="auto-btn active" id="autoBtn">▶ Auto</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide')
+  const total = slides.length
+  let current = 0
+  let autoTimer = null
+  let autoPlay = true
+
+  function show(n) {
+    slides.forEach(s => s.classList.remove('active'))
+    slides[n].classList.add('active')
+    current = n
+    document.getElementById('counter').textContent = (n+1) + ' / ' + total
+  }
+
+  function next() { show((current + 1) % total) }
+  function prev() { show((current - 1 + total) % total) }
+
+  document.getElementById('nextBtn').addEventListener('click', () => { resetAuto(); next() })
+  document.getElementById('prevBtn').addEventListener('click', () => { resetAuto(); prev() })
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { resetAuto(); next(); e.preventDefault() }
+    if (e.key === 'ArrowLeft') { resetAuto(); prev(); e.preventDefault() }
+  })
+
+  function startAuto() {
+    stopAuto()
+    autoTimer = setInterval(next, 22500)
+    autoPlay = true
+    document.getElementById('autoBtn').textContent = '▶ Auto'
+    document.getElementById('autoBtn').classList.add('active')
+  }
+
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null }
+    autoPlay = false
+    document.getElementById('autoBtn').textContent = '■ Detener'
+    document.getElementById('autoBtn').classList.remove('active')
+  }
+
+  function resetAuto() {
+    if (autoPlay) { stopAuto(); startAuto() }
+  }
+
+  document.getElementById('autoBtn').addEventListener('click', () => {
+    if (autoPlay) stopAuto()
+    else startAuto()
+  })
+
+  startAuto()
+</script>
+</body>
+</html>
