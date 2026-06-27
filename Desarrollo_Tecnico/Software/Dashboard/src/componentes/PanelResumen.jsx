@@ -1,4 +1,4 @@
-export default function PanelResumen({ nodos }) {
+export default function PanelResumen({ nodos, onSeleccionar }) {
   if (!nodos.length) {
     return <div className="vacio">Esperando datos de los nodos...</div>
   }
@@ -8,7 +8,7 @@ export default function PanelResumen({ nodos }) {
       <h2 className="seccion-titulo">Nodos</h2>
       <div className="grid">
         {nodos.map(n => (
-          <div key={n.nodo} className={`card ${n.tipo === 'alerta' ? 'alerta' : ''}`}>
+          <div key={n.nodo} className={`card ${n.tipo === 'alerta' ? 'alerta' : ''} ${onSeleccionar ? 'clickeable' : ''}`} onClick={() => onSeleccionar?.(n.nodo)}>
             <div className="card-header">
               <h3>{n.nodo}</h3>
               <span className={`estado-badge ${n.tipo}`}>{n.tipo}</span>
