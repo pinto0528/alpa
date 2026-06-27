@@ -74,7 +74,7 @@ Sistema autónomo de detección temprana de incendios rurales compuesto por nodo
 
 **Función:** Bridge LoRa → HTTP. Recibe paquetes LoRa de los nodos sensores, clasifica si la lectura es una alerta (flama detectada, temperatura >50°C o humo detectado) y envía los datos al servidor mediante HTTP POST.
 
-**Mapeo de nodos:** Hasta 4 nodos configurados (`nodo-xiao_01` a `nodo-xiao_04`).
+**Mapeo de nodos:** El firmware actual tiene 4 IDs de nodo hardcodeados (`nodo-xiao_01` a `nodo-xiao_04`). No es un límite del hardware — el gateway puede escalar a 30-50 nodos sin cambios de hardware, solo requiere actualizar el mapeo en firmware y agregar backoff aleatorio en transmisiones para mitigar colisiones.
 
 ### 3.3 Servidor
 
@@ -161,7 +161,7 @@ JSON HTTP (POST /api/eventos):
 | Sync Word | 0x12 |
 | Potencia de transmisión | +22 dBm |
 | Alcance estimado | 2-5 km campo abierto |
-| Nodos por gateway | Hasta 10 (<1% colisión) |
+| Nodos por gateway | Hasta 50 (<15% colisión sin backoff; <5% con backoff) |
 | Frecuencia de reporte | Cada 5 segundos |
 | Autonomía | >24 horas (batería 3000 mAh + solar) |
 

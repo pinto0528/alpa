@@ -14,7 +14,9 @@ El sistema opera a 915 MHz con SF7 y BW 125 kHz. En campo abierto (cañaverales,
 
 ### Nodos por gateway
 
-Cada nodo transmite un paquete de 11 bytes cada 5 segundos. Con SF7, el tiempo al aire por paquete es de ~41 ms. El límite práctico antes de colisiones significativas es:
+Cada nodo transmite un paquete de 11 bytes cada 5 segundos. Con SF7, el tiempo al aire por paquete es de ~41 ms. El límite práctico antes de colisiones significativas (sin backoff) es:
+
+> **Nota:** El firmware actual del gateway tiene 4 IDs de nodo hardcodeados. Esto es un límite de implementación actual (MVP), no un límite del hardware ni del protocolo LoRa. Escalar a 30-50 nodos solo requiere actualizar el mapeo en firmware y agregar backoff aleatorio en transmisiones.
 
 | Nodos | Colisión estimada | Adecuado para |
 |---|---|---|
