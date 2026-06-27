@@ -17,26 +17,45 @@ Proyecto de detección temprana de incendios para productores agropecuarios en z
 
 ```
 /
-├── AGENTS.md              # Este archivo
-├── roadmap.md             # Roadmap del proyecto
-├── Presentacion_general/  # Introducción, resumen ejecutivo, one-pager
-├── Problema_y_contexto/   # Descripción, estadísticas, impacto
-├── Solucion_propuesta/    # Arquitectura, componentes, flujo de datos
-├── Prototipado_y_validacion/ # Entrevistas, mapas de empatía, perfiles
-├── Desarrollo_tecnico/    # Hardware, software, firmware, comunicaciones
-├── Modelo_de_negocio/     # Canvas, mercado, competencia, ingresos
-├── Finanzas_y_viabilidad/ # Costos, proyecciones, inversión
-├── Impacto_y_sostenibilidad/ # ODS, impacto social/ambiental
-├── Comunicacion/          # Pitch, branding, demo
-├── Documentacion/         # Manuales técnico y de usuario, FAQ
-├── Entregables_concurso/  # Entregables para EmprendeU
-└── Anexos/                # Referencias, papers, normativas
+├── README.md                     # Descripción general del proyecto
+├── AGENTS.md                     # Este archivo
+│
+├── Comunicacion/                 # Branding, pitch, assets de marketing
+│   ├── Assets/                   # Imágenes públicas (diagramas, fotos)
+│   ├── Branding/                 # Identidad visual, logo, manual
+│   │   ├── Identidad_visual/     # Manual, brand-presentation
+│   │   └── Logo/                 # logo.svg, logo_rojo.png, etc.
+│   └── scratch/                  # Slides, borradores de presentación
+│
+├── Desarrollo_Tecnico/           # Implementación técnica del sistema
+│   ├── Hardware/                 # Esquemas, prototipos, BOM
+│   │   ├── Esquemas/
+│   │   ├── Lista_materiales/
+│   │   └── Prototipos/
+│   └── Software/                 # Firmware, backend, dashboard
+│       ├── Dashboard/            # Frontend React + Vite
+│       ├── Firmware_sensores/    # Código para ESP32-S3 (nodo + gateway)
+│       └── Servidor/             # Backend Express + NeDB + Socket.IO
+│
+├── Documentacion/                # Documentación del proyecto
+│   ├── Anexos/                   # Papers, normativas, referencias
+│   ├── Entregables_concurso/     # Entregables E1–E4 para EmprendeU
+│   ├── Finanzas_y_viabilidad/    # Costos, proyecciones
+│   ├── Impacto_y_sostenibilidad/ # ODS, impacto social/ambiental
+│   ├── Modelo_de_negocio/        # Canvas, mercado, competencia
+│   ├── Presentacion_general/     # One-pager, introducción
+│   ├── Problema_y_contexto/      # Estadísticas, impacto del problema
+│   ├── Solucion_propuesta/       # Arquitectura, componentes, flujo
+│   └── Validacion/               # Entrevistas, mapas de empatía
+│
+├── Herramientas/                 # Scripts de utilidad (md_to_docx.py)
+└── scratch/                      # Auditorías, reportes internos
 ```
 
 ## Convenciones
 
 - Los documentos se redactan en español (argentino).
 - Usar Markdown para documentación textual.
-- Los entregables del concurso se versionan en `Entregables_concurso/`.
-- El roadmap en `roadmap.md` es la referencia principal de planificación.
+- Los entregables del concurso se versionan en `Documentacion/Entregables_concurso/`.
+- Paleta ALPA: `#911B1E` (rojo inca), `#D4B896` (lino crudo), `#222222` (pizarra), `#F5F5F5` (hueso).
 - No commitees cambios sin instrucción explícita del usuario.
