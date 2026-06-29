@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALPA · Alerta temprana de incendios para el campo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #F5F5F5;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero {
+    width: 100%;
+    background: linear-gradient(160deg, #F5F5F5 0%, #fff 100%);
+    border-bottom: 6px solid #911B1E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+  }
+  .hero svg { width: 380px; margin-bottom: 1.5rem; }
+  .hero .tagline {
+    font-size: 1.1rem;
+    color: #911B1E;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #222;
+    max-width: 700px;
+    line-height: 1.2;
+  }
+  .hero h1 strong { color: #911B1E; }
+  .hero p {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 500;
+    max-width: 600px;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+  .section {
+    width: 100%;
+    max-width: 1000px;
+    padding: 4rem 2rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #222;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #911B1E;
+    margin: 0.8rem auto 0;
+    border-radius: 2px;
+  }
+  .problema-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 2px solid #E8DDD0;
+  }
+  .stat-card .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #911B1E;
+  }
+  .stat-card .label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    margin-top: 0.4rem;
+    line-height: 1.4;
+  }
+  .stat-card .src {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    font-weight: 500;
+    margin-top: 0.3rem;
+  }
+  .solucion {
+    background: #fff;
+    width: 100%;
+    border-top: 1px solid #E8DDD0;
+    border-bottom: 1px solid #E8DDD0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .solucion .inner {
+    max-width: 1000px;
+    width: 100%;
+    padding: 4rem 2rem;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #911B1E;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-text h3 {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #222;
+    margin-bottom: 0.3rem;
+  }
+  .step-text p {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .step-text strong { color: #911B1E; }
+  .diferencial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .diferencial-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 2px solid #E8DDD0;
+  }
+  .diferencial-card h3 {
+    font-weight: 800;
+    font-size: 1rem;
+    color: #911B1E;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .diferencial-card p {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .diferencial-card .x {
+    color: #911B1E;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+  }
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .eq-card { text-align: center; }
+  .eq-card .avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 auto 0.8rem;
+    border: 3px solid #911B1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #911B1E;
+  }
+  .eq-card .name { font-weight: 800; font-size: 0.95rem; color: #222; }
+  .eq-card .role { font-size: 0.8rem; color: #666; font-weight: 600; }
+  .footer {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid #E8DDD0;
+    color: #999;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .footer strong { color: #911B1E; }
+  @media (max-width: 768px) {
+    .problema-grid { grid-template-columns: 1fr; }
+    .diferencial-grid { grid-template-columns: 1fr; }
+    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 1.8rem; }
+    .hero svg { width: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+    <defs><mask id="m"><rect x="140" y="30" width="320" height="190" fill="white"/>
+      <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" fill="black"><tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan></text>
+    </mask></defs>
+    <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
+    <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
+    <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#m)"/>
+    <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
+    <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
+  </svg>
+  <div class="tagline">Cuidamos tu campo</div>
+  <h1>Alerta temprana de incendios<br>donde <strong>no hay señal</strong></h1>
+  <p>ALPA es un sistema de detección de incendios para el campo que funciona sin celular, sin internet y sin electricidad. Nodos sensores autoalimentados que se comunican entre sí y alertan al productor al instante.</p>
+</div>
+
+<div class="section">
+  <h2>El problema</h2>
+  <div class="problema-grid">
+    <div class="stat-card">
+      <div class="num">4.000</div>
+      <div class="label">Hectáreas quemadas en Tucumán en la última temporada</div>
+      <span class="src">Fuente: EEAOC</span>
+    </div>
+    <div class="stat-card">
+      <div class="num">+50%</div>
+      <div class="label">Aumento de la superficie afectada por incendios en el NOA</div>
+      <span class="src">Fuente: INTA</span>
+    </div>
+    <div class="stat-card">
+      <div class="num">8.000+</div>
+      <div class="label">Establecimientos rurales sin conectividad en Argentina</div>
+      <span class="src">Fuente: ENACOM</span>
+    </div>
+  </div>
+</div>
+
+<div class="solucion">
+  <div class="inner">
+    <h2>¿Cómo funciona?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h3>Se instala en el campo</h3>
+          <p>Cada nodo lleva sensor de temperatura, humo y llama, panel solar y radio LoRa. Se coloca en un poste y arranca solo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h3>Se encadena con otros nodos</h3>
+          <p>Si un nodo no alcanza al <strong>punto de salida</strong>, rebota la señal a otro nodo hasta que encuentra una ruta. No requiere repetidores ni torres.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h3>Alerta al productor</h3>
+          <p>Apenas detecta fuego, envía una alerta por WhatsApp, activa una sirena y notifica a bomberos voluntarios. El productor se entera en minutos, no en horas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Por qué ALPA es diferente</h2>
+  <div class="diferencial-grid">
+    <div class="diferencial-card">
+      <h3><span class="x">✗</span>Sin infraestructura</h3>
+      <p>No necesita torre, repetidor, fibra óptica, antena 4G ni electricidad. Solo un punto de salida con WiFi en la vivienda del productor.</p>
+    </div>
+    <div class="diferencial-card">
+      <h3><span class="x">✗</span>Sin suscripción cara</h3>
+      <p>Nada de USD 500+ al año como las alternativas satelitales. Una cuota accesible que cualquier productor puede pagar.</p>
+    </div>
+    <div class="diferencial-card">
+      <h3><span class="x">✗</span>Sin instalación técnica</h3>
+      <p>El productor lo instala él mismo. No se necesita ingeniero ni contratista. Se proveen repuestos y soporte remoto.</p>
+    </div>
+    <div class="diferencial-card">
+      <h3><span class="x">✗</span>Sin depender del celular</h3>
+      <p>Los nodos se comunican por radio LoRa (2-5 km) sin usar la red celular. El productor recibe la alerta cuando vuelve a tener señal.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Equipo</h2>
+  <div class="equipo-grid">
+    <div class="eq-card">
+      <div class="avatar">M</div>
+      <div class="name">Mario Quiroga</div>
+      <div class="role">Desarrollo de software</div>
+    </div>
+    <div class="eq-card">
+      <div class="avatar">J</div>
+      <div class="name">Jeremías Mastafa</div>
+      <div class="role">Firmware y comunicaciones</div>
+    </div>
+    <div class="eq-card">
+      <div class="avatar">G</div>
+      <div class="name">Gonzalo Lescano</div>
+      <div class="role">Negocio y operaciones</div>
+    </div>
+    <div class="eq-card">
+      <div class="avatar">N</div>
+      <div class="name">Nicolás Pinto</div>
+      <div class="role">Hardware y prototipado</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>ALPA</strong> · Semifinales EmprendeU 2026 · UTN Facultad Regional Tucumán
+</div>
+
+</body>
+</html>
