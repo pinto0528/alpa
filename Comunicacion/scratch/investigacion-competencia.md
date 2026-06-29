@@ -14,7 +14,7 @@
 - **Clientes:** Vodafone España, gobiernos, forestales. 50+ despliegues globales, 20.000+ sensores.
 - **Funding:** >€10M (seed + grants).
 - **Limitación:** Sensor diseñado para bosques densos (1 sensor/ha), no para campos agrícolas abiertos. Precio por hectárea alto si se escala. No funciona sin gateway cercano (mesh).
-- **Dif con ALPA:** Dryad es para bosques gestionados por gobiernos/empresas. ALPA es para el productor individual. Dryad requiere malla densa (cada hectárea). ALPA cubre 2-5 km por nodo en campo abierto.
+- **Dif con ALPA:** Dryad es para bosques gestionados por gobiernos/empresas. ALPA es para el productor individual. Dryad requiere malla densa (cada hectárea). ALPA distribuye nodos en el campo (detección local ~10-50 m c/u), y se comunican por LoRa hasta 2-5 km al gateway.
 
 ### 2. N5 Sensors (USA) — N5SHIELD
 
@@ -104,20 +104,22 @@
 Después de investigar, la respuesta es clara: **sí hay productos similares tecnológicamente, pero ninguno apunta al productor agropecuario argentino sin conectividad.**
 
 ### Lo que tienen los competidores globales:
+
 - Soluciones basadas en **cámaras+IA** (Pano, FireTracking, Fire Foresight, AXIS) — requieren torre, electricidad, backhaul. Cuestan cientos de miles.
 - Soluciones **satelitales** (OroraTech, Satellites on Fire) — detectan tarde, no dan alerta al productor individual.
 - Soluciones **LoRaWAN** (Dryad, SenForFire) — Dryad es para bosques europeos (precio €/ha alto), SenForFire es académico.
 
 ### Lo que NO existe:
-| Característica | Competidores | ALPA |
-|---|---|---|
-| Sin señal celular | Solo Dryad (con mesh) | Sí, LoRa local |
-| Sin electricidad de red | Todos con panel solar | Sí, igual |
-| Alerta directa al productor | No (alertan al gobierno) | Sí, dashboard + notif |
-| Precio accesible (<USD 1.000) | Dryad (~€48/sensor pero mesh caro) | **USD 500 kit** |
-| Hecho para agricultura (no bosque) | No (Dryad/SenForFire orientado a bosque) | **Sí, cañaverales/citricos** |
-| Funciona sin infraestructura previa | Ninguno | **Sí** |
-| Escala a 1 productor individual | No (todos venden a gobiernos/empresas) | **Sí** |
+
+| Característica                      | Competidores                             | ALPA                         |
+| ----------------------------------- | ---------------------------------------- | ---------------------------- |
+| Sin señal celular                   | Solo Dryad (con mesh)                    | Sí, LoRa local               |
+| Sin electricidad de red             | Todos con panel solar                    | Sí, igual                    |
+| Alerta directa al productor         | No (alertan al gobierno)                 | Sí, dashboard + notif        |
+| Precio accesible (<USD 1.000)       | Dryad (~€48/sensor pero mesh caro)       | **USD 500 kit**              |
+| Hecho para agricultura (no bosque)  | No (Dryad/SenForFire orientado a bosque) | **Sí, cañaverales/citricos** |
+| Funciona sin infraestructura previa | Ninguno                                  | **Sí**                       |
+| Escala a 1 productor individual     | No (todos venden a gobiernos/empresas)   | **Sí**                       |
 
 ### Razones principales por las que no hay un ALPA:
 
@@ -128,7 +130,7 @@ Después de investigar, la respuesta es clara: **sí hay productos similares tec
 
 ### Conclusión para el pitch:
 
-> *"Hay docenas de startups combatiendo incendios en el mundo. Pero ninguna construyó un sistema que funcione en un cañaveral tucumano sin señal, sin luz, sin nada. Todas asumen que hay infraestructura. ALPA no asume nada."*
+> _"Hay docenas de startups combatiendo incendios en el mundo. Pero ninguna construyó un sistema que funcione en un cañaveral tucumano sin señal, sin luz, sin nada. Todas asumen que hay infraestructura. ALPA no asume nada."_
 
 Esto convierte la limitación de ALPA (sensores simples) en una fortaleza: no necesitás sensores caros porque lo que importa no es la precisión del sensor — es que **por primera vez hay un sensor en ese lugar**.
 
