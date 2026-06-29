@@ -1,6 +1,10 @@
 # Node
 node_modules/
 
+# Slides PNGs
+Comunicacion/Presentacion_semifinal/assets/
+Comunicacion/Assets/Imagenes_Slides/
+
 # Entorno
 .env
 .env.local

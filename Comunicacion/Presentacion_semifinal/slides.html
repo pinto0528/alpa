@@ -6,7 +6,7 @@
 <title>ALPA · Presentación Semifinal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -36,13 +36,10 @@
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
-    padding: 80px 100px;
+    padding: 70px 90px;
     overflow: hidden;
   }
-  .slide.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .slide.active { opacity: 1; pointer-events: auto; }
   .slide::before {
     content: '';
     position: absolute;
@@ -50,231 +47,270 @@
     height: 10px;
     background: #911B1E;
   }
-  /* Slide 1: Portada */
+  /* Portada */
   .slide.portada {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #F5F5F5 0%, #fff 100%);
+    background: linear-gradient(160deg, #F5F5F5 0%, #fff 100%);
   }
-  .slide.portada .logo-slide { width: 500px; margin-bottom: 2rem; }
-  .slide.portada h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 3.5rem;
-    color: #911B1E;
-    margin-bottom: 1rem;
-  }
+  .slide.portada .logo-slide { width: 550px; margin-bottom: 2.5rem; }
   .slide.portada .tagline {
-    font-size: 1.2rem;
-    color: #666;
-    letter-spacing: 0.1em;
+    font-size: 1.4rem;
+    color: #911B1E;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 2.5rem;
   }
-  .slide.portada .meta {
-    font-size: 0.9rem;
-    color: #999;
-  }
+  .slide.portada .meta { font-size: 1.1rem; color: #888; font-weight: 600; line-height: 1.8; }
   .slide.portada .meta strong { color: #911B1E; }
-  /* Slide content */
+  /* Titles */
   .slide h2 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
+    font-weight: 900;
     color: #911B1E;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
   }
   .slide h2 .num {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    color: #999;
-    font-weight: 400;
+    color: #D4B896;
+    font-weight: 700;
     display: block;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.15em;
   }
   .slide .sub {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.3rem;
+    color: #444;
     margin-bottom: 2rem;
-  }
-  .slide .content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-  }
-  /* Stats layout */
-  .stats-row {
-    display: flex;
-    gap: 2rem;
-    width: 100%;
-  }
-  .stat-big {
-    flex: 1;
-    background: #fff;
-    border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
-    border: 1px solid #D4B896;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .stat-big .num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #911B1E;
-    line-height: 1.1;
-  }
-  .stat-big .label {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 0.5rem;
-    font-weight: 500;
-  }
-  .stat-big .src {
-    font-size: 0.75rem;
-    color: #999;
-    margin-top: 0.5rem;
-  }
-  /* Comparison grid */
-  .comp-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    width: 100%;
-  }
-  .comp-item {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid #D4B896;
-  }
-  .comp-item h4 {
-    font-size: 1rem;
     font-weight: 600;
-    color: #222;
-    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    max-width: 1400px;
   }
-  .comp-item .bad {
-    color: #999;
-    font-size: 0.85rem;
-  }
-  .comp-item .bad::before { content: '✗ '; color: #911B1E; }
-  .gap-item {
-    background: #911B1E;
-    color: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-  .gap-item h4 { font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
-  .gap-item p { font-size: 0.9rem; opacity: 0.9; }
-  /* Diagram flow */
-  .flow-row {
+  .slide .content { flex: 1; display: flex; align-items: center; gap: 3rem; width: 100%; }
+  /* Image placeholder */
+  .img-box {
+    background: #fff;
+    border: 3px dashed #D4B896;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    width: 100%;
-  }
-  .flow-node {
-    background: #fff;
-    border: 3px solid #911B1E;
-    border-radius: 16px;
-    padding: 1.5rem 2rem;
+    color: #bbb;
+    font-size: 0.85rem;
     text-align: center;
-    min-width: 180px;
+    padding: 1.2rem;
+    line-height: 1.5;
   }
-  .flow-node .icon { font-size: 2rem; margin-bottom: 0.5rem; }
-  .flow-node .name { font-weight: 700; font-size: 1rem; color: #222; }
-  .flow-node .desc { font-size: 0.75rem; color: #666; margin-top: 0.3rem; }
-  .flow-node.highlight { background: #911B1E; }
-  .flow-node.highlight .name, .flow-node.highlight .desc { color: #fff; }
-  .flow-arr { font-size: 2rem; color: #911B1E; font-weight: 300; }
-  /* Prototype section */
-  .proto-layout {
-    display: flex;
-    gap: 2rem;
-    width: 100%;
+  .img-box span { display: block; }
+  .img-box .tag {
+    color: #911B1E;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
   }
-  .proto-col {
-    flex: 1;
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid #D4B896;
-    text-align: center;
+
+  /* ============ IMAGE DIMENSIONS ============ */
+  /* Ajustá estos valores para cambiar el tamaño de cada imagen */
+  /* w=620 h=540 - Slide 2 */
+  .slide.problema .img-box {
+    width: 620px;
+    height: 540px;
+    flex-shrink: 0;
   }
-  .proto-col .box {
+  /* w=100% h=200 - Slide 4 */
+  .sol-img {
     width: 100%;
     height: 200px;
-    background: #F5F5F5;
-    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  /* w=580 h=580 - Slide 5 */
+  .slide.diferencial .img-box {
+    width: 580px;
+    height: 580px;
+    flex-shrink: 0;
+  }
+  /* w=520 h=480 - Slide 6 */
+  .market-right .img-box {
+    width: 520px;
+    height: 480px;
+  }
+  /* w=100% h=180 - Slide 7 */
+  .team-img {
+    width: 100%;
+    height: 180px;
+    flex-shrink: 0;
+  }
+  /* ========================================== */
+
+  /* Problem slide */
+  .slide.problema .content { gap: 4rem; }
+  .prob-list { flex: 1; display: flex; flex-direction: column; gap: 1.8rem; }
+  .prob-item { display: flex; align-items: center; gap: 1.5rem; }
+  .prob-item .num-big {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4.2rem;
+    font-weight: 900;
+    color: #911B1E;
+    line-height: 1;
+    min-width: 150px;
+  }
+  .prob-item .desc { font-size: 1.2rem; color: #222; font-weight: 700; line-height: 1.4; }
+  .prob-item .desc .src { display: block; font-size: 0.75rem; color: #999; font-weight: 400; margin-top: 0.2rem; }
+  /* Gap slide - 2x2 grid + horizontal card */
+  .gap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    width: 100%;
+  }
+  .gap-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1.8rem;
+    border: 2px solid #D4B896;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .gap-card h4 { font-size: 1.15rem; font-weight: 800; color: #222; margin-bottom: 0.8rem; }
+  .gap-card .cross { font-size: 0.9rem; color: #888; font-weight: 600; padding: 0.25rem 0; line-height: 1.5; }
+  .gap-card .cross::before { content: '✗ '; color: #911B1E; font-weight: 900; font-size: 1rem; }
+  .gap-card .check-line { font-size: 0.9rem; color: #888; font-weight: 600; padding: 0.25rem 0; line-height: 1.5; }
+  .gap-card .check-line::before { content: '✓ '; color: #24b410; font-weight: 900; font-size: 1rem; }
+  .gap-bottom {
+    width: 100%;
+    background: #911B1E;
+    border-radius: 16px;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    border: none;
+  }
+  .gap-bottom h4 { color: #fff; font-size: 1.5rem; font-weight: 900; }
+  .gap-bottom p { color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 600; margin-top: 0.3rem; }
+  .slide.gap-slide .content { flex-direction: column; gap: 1rem; align-items: stretch; }
+  /* Solution slide */
+  .slide.solucion .content { flex-direction: column; gap: 1rem; align-items: stretch; }
+  .sol-row { display: flex; align-items: stretch; gap: 0.5rem; width: 100%; }
+  .sol-step {
+    flex: 1;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border: 2px solid #D4B896;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .sol-step .icon { font-size: 2.8rem; margin-bottom: 0.6rem; }
+  .sol-step .name { font-weight: 800; font-size: 1.1rem; color: #222; margin-bottom: 0.3rem; }
+  .sol-step .desc { font-size: 0.85rem; color: #555; line-height: 1.5; font-weight: 500; }
+  .sol-step.destacado { background: #911B1E; border-color: #911B1E; }
+  .sol-step.destacado .name, .sol-step.destacado .desc { color: #fff; }
+  .sol-arr { font-size: 2rem; color: #911B1E; font-weight: 300; display: flex; align-items: center; padding: 0 0.2rem; }
+  /* Diferencial */
+  .slide.diferencial .content { gap: 3rem; }
+  .dif-list { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+  .dif-item { display: flex; align-items: center; gap: 1.2rem; }
+  .dif-item .check {
+    width: 48px; height: 48px;
+    background: #911B1E;
+    color: #fff;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #999;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    border: 2px dashed #D4B896;
+    font-size: 1.4rem;
+    font-weight: 900;
+    flex-shrink: 0;
   }
-  .proto-col h4 { font-size: 1rem; color: #911B1E; margin-bottom: 0.3rem; }
-  .proto-col p { font-size: 0.8rem; color: #666; }
+  .dif-item .text { font-size: 1.3rem; color: #222; line-height: 1.5; font-weight: 600; }
+  .dif-item .text strong { color: #911B1E; font-weight: 800; }
+  /* Market */
+  .market-row { display: flex; gap: 2rem; width: 100%; }
+  .market-left { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; }
+  .market-stat {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1.8rem;
+    border: 2px solid #D4B896;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .market-stat .ms-val {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #911B1E;
+    min-width: 100px;
+  }
+  .market-stat .ms-desc { font-size: 1rem; color: #333; font-weight: 600; line-height: 1.4; }
   /* Team */
+  .slide.team-slide .content { flex-direction: column; gap: 1.5rem; align-items: stretch; }
   .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
   }
   .team-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    padding: 2rem 1.2rem;
     text-align: center;
-    border: 1px solid #D4B896;
+    border: 2px solid #D4B896;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   }
   .team-card .avatar {
-    width: 80px; height: 80px;
+    width: 85px; height: 85px;
     border-radius: 50%;
     background: #F5F5F5;
-    margin: 0 auto 1rem;
-    border: 3px solid #911B1E;
+    margin: 0 auto 1.2rem;
+    border: 4px solid #911B1E;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 900;
     color: #911B1E;
     font-family: 'Playfair Display', Georgia, serif;
   }
-  .team-card .name { font-weight: 700; font-size: 1rem; color: #222; }
-  .team-card .role { font-size: 0.8rem; color: #666; margin-top: 0.3rem; }
-  /* Close slide */
+  .team-card .name { font-weight: 800; font-size: 1.1rem; color: #222; }
+  .team-card .role { font-size: 0.85rem; color: #666; font-weight: 600; margin-top: 0.4rem; }
+  .team-card .stud { font-size: 0.75rem; color: #999; font-weight: 500; margin-top: 0.2rem; }
+  /* Cierre */
   .slide.cierre {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: linear-gradient(160deg, #F5F5F5 0%, #fff 100%);
   }
-  .slide.cierre .logo-slide { width: 400px; margin-bottom: 2rem; }
-  .slide.cierre h2 {
+  .slide.cierre .logo-slide { width: 450px; margin-bottom: 2.5rem; }
+  .slide.cierre .frase {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.5rem;
-    color: #911B1E;
-    margin-bottom: 1rem;
-  }
-  .slide.cierre .tagline {
-    font-size: 1rem;
-    color: #666;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 2.8rem;
+    color: #222;
+    font-weight: 700;
+    max-width: 1000px;
+    line-height: 1.3;
     margin-bottom: 2rem;
   }
-  .slide.cierre .contacto {
-    font-size: 0.9rem;
-    color: #999;
+  .slide.cierre .frase strong { color: #911B1E; font-weight: 900; }
+  .slide.cierre .tagline {
+    font-size: 1.1rem;
+    color: #911B1E;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
   }
+  .slide.cierre .contacto { font-size: 1rem; color: #888; font-weight: 600; }
+  .slide.cierre .contacto strong { color: #911B1E; }
   /* Controls */
   .controls {
     position: fixed;
@@ -296,202 +332,203 @@
     border-radius: 50%;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.2s;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
   }
   .controls button:hover { border-color: #911B1E; background: #911B1E; }
-  .controls .counter {
-    color: rgba(255,255,255,0.6);
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    padding: 0 0.5rem;
-  }
-  .controls .auto-btn {
-    background: none;
-    border: 2px solid rgba(255,255,255,0.3);
-    color: #fff;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-  }
-  .controls .auto-btn.active { border-color: #24b410; color: #24b410; }
+  .controls .counter { color: rgba(255,255,255,0.6); font-size: 0.85rem; display: flex; align-items: center; padding: 0 0.5rem; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="presenter" id="presenter">
 
-  <!-- Slide 1: Portada -->
+  <!-- SLIDE 1: Portada -->
   <div class="slide portada active" data-slide="0">
     <svg class="logo-slide" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <mask id="cutout0">
-          <rect x="140" y="30" width="320" height="190" fill="white"/>
-          <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" letter-spacing="0" fill="black">
-            <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
-          </text>
-        </mask>
-      </defs>
+      <defs><mask id="m0"><rect x="140" y="30" width="320" height="190" fill="white"/>
+        <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" fill="black"><tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan></text>
+      </mask></defs>
       <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
       <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
-      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout0)"/>
+      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#m0)"/>
       <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
       <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
     </svg>
     <div class="tagline">Cuidamos tu campo</div>
     <div class="meta">
-      Semifinales <strong>EmprendeU 2026</strong> · UTN Facultad Regional Tucumán
+      Semifinales <strong>EmprendeU 2026</strong><br>
+      UTN Facultad Regional Tucumán
     </div>
   </div>
 
-  <!-- Slide 2: El problema -->
-  <div class="slide" data-slide="1">
+  <!-- SLIDE 2: El problema -->
+  <div class="slide problema" data-slide="1">
     <h2><span class="num">01</span>El problema</h2>
-    <p class="sub">Argentina registra más de 10.000 incendios rurales por año</p>
+    <p class="sub">55.870 hectáreas quemadas en Tucumán el año pasado.<br> Y el productor se entera 40 minutos tarde.</p>
     <div class="content">
-      <div class="stats-row">
-        <div class="stat-big">
-          <div class="num">+10.000</div>
-          <div class="label">Incendios por año en Argentina</div>
-          <div class="src">Fuente: CPIA 2026</div>
+      <div class="prob-list">
+        <div class="prob-item">
+          <div class="num-big">55.870</div>
+          <div class="desc">Hectáreas quemadas en Tucumán (2025)<span class="src">Fuente: EEAOC</span></div>
         </div>
-        <div class="stat-big">
-          <div class="num">55.870</div>
-          <div class="label">Hectáreas quemadas en Tucumán (2025)</div>
-          <div class="src">Fuente: EEAOC</div>
+        <div class="prob-item">
+          <div class="num-big">40 min</div>
+          <div class="desc">Tarda el productor en enterarse de un incendio<span class="src">Entrevistas con productores</span></div>
         </div>
-        <div class="stat-big">
-          <div class="num">$11M</div>
-          <div class="label">USD de pérdida máxima por campo</div>
-          <div class="src">Fuente: INTA / FAO</div>
+        <div class="prob-item">
+          <div class="num-big" style="font-size:3rem;min-width:150px;">SIN SEÑAL</div>
+          <div class="desc">No hay celular, internet ni electricidad en el lote<span class="src">Realidad del NOA</span></div>
+        </div>
+      </div>
+      <div class="img-box">
+        <div>
+          <span class="tag">Imagen sugerida</span>
+          <span>Campo de caña quemado. Primer plano: caña carbonizada. Fondo: cañaveral verde. Contraste entre lo perdido y lo salvable.</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Slide 3: El gap -->
-  <div class="slide" data-slide="2">
-    <h2><span class="num">02</span>¿Qué hay hoy?</h2>
-    <p class="sub">Ninguna solución cubre al productor individual sin conectividad</p>
+  <!-- SLIDE 3: Lo que existe no sirve -->
+  <div class="slide gap-slide" data-slide="2">
+    <h2><span class="num">02</span>Lo que existe no sirve</h2>
+    <p class="sub">Todas las soluciones asumen infraestructura. En el NOA no hay.</p>
     <div class="content">
-      <div class="comp-grid">
-        <div class="comp-item">
-          <h4>Satélites (NASA FIRMS)</h4>
-          <div class="bad">Detección tardía (3-12 h de latencia)</div>
-          <div class="bad">Resolución de 375 m a 1 km</div>
-          <div class="bad">No alerta directa al productor</div>
+      <div class="gap-grid">
+        <div class="gap-card">
+          <h4>Satélites</h4>
+          <div class="cross">Detectan fuego 3 a 12 horas después</div>
+          <div class="cross">No alertan al productor en zona sin señal</div>
         </div>
-        <div class="comp-item">
-          <h4>Faros de Conservación</h4>
-          <div class="bad">Costo ~USD 500.000 por torre</div>
-          <div class="bad">Cobertura regional, no llega al productor</div>
-          <div class="bad">Requiere red eléctrica e internet</div>
+        <div class="gap-card">
+          <h4>Torres con cámaras + IA</h4>
+          <div class="cross">Cuestan hasta USD 500.000 por torre</div>
+          <div class="cross">Requieren electricidad y 4G</div>
         </div>
-        <div class="comp-item">
-          <h4>Pampa 4 / Telecom IoT</h4>
-          <div class="bad">Requiere cobertura LoRaWAN o 4G</div>
-          <div class="bad">No funciona en zonas rurales profundas</div>
-          <div class="bad">Costo de suscripción elevado</div>
+        <div class="gap-card">
+          <h4>Redes IoT públicas (LoRaWAN, NB-IoT)</h4>
+          <div class="cross">Cobertura solo en rutas y ciudades</div>
+          <div class="cross">No llegan al interior del campo</div>
         </div>
-        <div class="gap-item">
-          <h4>Ninguna funciona sin conectividad</h4>
-          <p>Ahí aparece ALPA</p>
+        <div class="gap-card">
+          <h4>Starlink / Internet satelital</h4>
+          <div class="cross">Alto costo mensual (~USD 60/mes)</div>
+          <div class="cross">Requiere energía permanente y cielo despejado</div>
+          <div class="check-line">Solución complementaria, no reemplaza detección</div>
         </div>
+      </div>
+      <div class="gap-bottom">
+        <h4>Ninguna funciona sin infraestructura previa</h4>
+        <p>Ahí aparece ALPA</p>
       </div>
     </div>
   </div>
 
-  <!-- Slide 4: La solución -->
-  <div class="slide" data-slide="3">
+  <!-- SLIDE 4: ALPA -->
+  <div class="slide solucion" data-slide="3">
     <h2><span class="num">03</span>ALPA</h2>
-    <p class="sub">Detección en &lt;5 min · Sin celular · Sin red eléctrica</p>
-    <div class="content" style="flex-direction:column;gap:2rem;">
-      <div class="flow-row">
-        <div class="flow-node">
-          <div class="icon">🔥</div>
-          <div class="name">Nodo Sensor</div>
-          <div class="desc">XIAO ESP32-S3 · LoRa · Sensores<br>Panel solar + batería</div>
-        </div>
-        <div class="flow-arr">→</div>
-        <div class="flow-node">
-          <div class="icon">📡</div>
-          <div class="name">LoRa 915 MHz</div>
-          <div class="desc">2-5 km alcance<br>11 bytes por paquete</div>
-        </div>
-        <div class="flow-arr">→</div>
-        <div class="flow-node">
-          <div class="icon">📶</div>
-          <div class="name">Gateway</div>
-          <div class="desc">LoRa → WiFi / 4G<br>Bridge a la nube</div>
-        </div>
-        <div class="flow-arr">→</div>
-        <div class="flow-node highlight">
-          <div class="icon">🚨</div>
-          <div class="name">Alerta</div>
-          <div class="desc">Dashboard + notificación<br>en menos de 5 minutos</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Slide 5: Prototipo -->
-  <div class="slide" data-slide="4">
-    <h2><span class="num">04</span>Prototipo funcional</h2>
-    <p class="sub">MVP desarrollado y probado en laboratorio UTN</p>
+    <p class="sub">Un sistema de alerta que funciona donde no hay nada.</p>
     <div class="content">
-      <div class="proto-layout">
-        <div class="proto-col">
-          <div class="box">[FOTO NODO SENSOR]</div>
-          <h4>Nodo Sensor</h4>
-          <p>XIAO ESP32-S3 + Wio-SX1262<br>DS18B20 · KY-026 · Detector humo<br>Panel 5W + Batería 18650</p>
+      <div class="img-box sol-img">
+        <div>
+          <span class="tag">Imagen sugerida</span>
+          <span>Diagrama del sistema: nodos en el campo → flechas → punto de salida en casa rural → alerta al celular.</span>
         </div>
-        <div class="proto-col">
-          <div class="box">[FOTO GATEWAY]</div>
-          <h4>Gateway</h4>
-          <p>XIAO ESP32-S3 + Wio-SX1262<br>Receptor LoRa → WiFi HTTP<br>Conexión a servidor cloud</p>
+      </div>
+      <div class="sol-row">
+        <div class="sol-step">
+          <div class="icon">🌾</div>
+          <div class="name">Nodos en el campo</div>
+          <div class="desc">Miden temperatura, humo y llama. Panel solar. Sin cables.</div>
         </div>
-        <div class="proto-col">
-          <div class="box">[CAPTURA DASHBOARD]</div>
-          <h4>Dashboard</h4>
-          <p>React + Vite + Socket.IO<br>Mapa satelital · Alertas en vivo<br>Panel de simulación</p>
+        <div class="sol-arr">→</div>
+        <div class="sol-step">
+          <div class="icon">🔁</div>
+          <div class="name">Rebotan la señal</div>
+          <div class="desc">Si no alcanzan al punto de salida, rebotan a otro nodo hasta llegar.</div>
+        </div>
+        <div class="sol-arr">→</div>
+        <div class="sol-step destacado">
+          <div class="icon">🏠</div>
+          <div class="name">Punto de salida</div>
+          <div class="desc">En la casa del productor. Recibe la alerta y la envía al mundo.</div>
+        </div>
+        <div class="sol-arr">→</div>
+        <div class="sol-step">
+          <div class="icon">📱</div>
+          <div class="name">Alerta al productor</div>
+          <div class="desc">WhatsApp, sirena o aviso a bomberos. Él decide.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Slide 6: Validación -->
+  <!-- SLIDE 5: Nuestro diferencial -->
+  <div class="slide diferencial" data-slide="4">
+    <h2><span class="num">04</span>Nuestro diferencial</h2>
+    <p class="sub">No es el sensor más sofisticado. Es que por primera vez hay un sensor donde nunca hubo.</p>
+    <div class="content">
+      <div class="img-box">
+        <div>
+          <span class="tag">Imagen sugerida</span>
+          <span>Nodo sensor (XIAO + panel solar) montado en un poste en medio del cañaveral. Dispositivo pequeño inmerso en paisaje rural abierto, sin infraestructura visible alrededor.</span>
+        </div>
+      </div>
+      <div class="dif-list">
+        <div class="dif-item">
+          <div class="check">✓</div>
+          <div class="text"><strong>Sin infraestructura previa.</strong> No necesita torre, 4G ni poste de luz. Arranca de cero.</div>
+        </div>
+        <div class="dif-item">
+          <div class="check">✓</div>
+          <div class="text"><strong>La alerta se encadena sola.</strong> Si un nodo no llega, rebota a otro hasta que la alerta sale.</div>
+        </div>
+        <div class="dif-item">
+          <div class="check">✓</div>
+          <div class="text"><strong>Alerta en minutos.</strong> No espera 3 horas como un satélite. Avisa al instante.</div>
+        </div>
+        <div class="dif-item">
+          <div class="check">✓</div>
+          <div class="text"><strong>Evolucionable.</strong> Los sensores mejoran. La red de comunicación no cambia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Cliente y mercado -->
   <div class="slide" data-slide="5">
-    <h2><span class="num">05</span>Validación con el territorio</h2>
-    <p class="sub">4 entrevistas con stakeholders reales de Tucumán</p>
+    <h2><span class="num">05</span>Cliente y mercado</h2>
+    <p class="sub">8.000 productores sin conectividad en el NOA. Solo en Tucumán se quemaron 55.870 ha.</p>
     <div class="content">
-      <div class="stats-row">
-        <div class="stat-big" style="border-top:4px solid #911B1E;">
-          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Productor agrícola</div>
-          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
-            "Te da una impotencia bárbara... mi verdadero terror es el limón: un fuego que cruza del cañaveral a la quinta me derrite kilómetros de mangueras"
+      <div class="market-row">
+        <div class="market-left">
+          <div class="market-stat">
+            <div class="ms-val">4.000</div>
+            <div class="ms-desc">Productores en Tucumán, Salta y Jujuy con campos >200 ha sin conectividad</div>
+          </div>
+          <div class="market-stat">
+            <div class="ms-val">8.000+</div>
+            <div class="ms-desc">Establecimientos >200 ha sin conectividad en todo el NOA (TAM)</div>
+          </div>
+          <div class="market-stat">
+            <div class="ms-val">+50%</div>
+            <div class="ms-desc">De la caña de azúcar del país se produce en el NOA. El 70% de esa superficie no tiene cobertura 4G</div>
           </div>
         </div>
-        <div class="stat-big" style="border-top:4px solid #911B1E;">
-          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Aseguradora</div>
-          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
-            "Si el productor tiene un sistema de monitoreo, podemos bonificar la póliza — hoy no tenemos cómo verificar si realmente hubo prevención"
-          </div>
-        </div>
-        <div class="stat-big" style="border-top:4px solid #911B1E;">
-          <div class="label" style="font-size:1.1rem;font-weight:700;color:#222;margin-top:0;">Bombero voluntario</div>
-          <div style="font-size:0.9rem;color:#666;margin-top:0.8rem;line-height:1.5;">
-            "Si me mandan las coordenadas GPS cuando recién es una chispa, mandamos una camioneta liviana con mochilas y lo apagamos en 10 minutos"
+        <div class="market-right">
+          <div class="img-box">
+            <div>
+              <span class="tag">Imagen sugerida — captura nPerf</span>
+              <span>Mapa de cobertura 4G del NOA. Ciudades capitales con señal, el resto del territorio en negro. Contrastar con zonas productivas.</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Slide 7: Equipo -->
-  <div class="slide" data-slide="6">
+  <!-- SLIDE 7: Equipo -->
+  <div class="slide team-slide" data-slide="6">
     <h2><span class="num">06</span>Equipo</h2>
     <p class="sub">Estudiantes de la UTN Facultad Regional Tucumán</p>
     <div class="content">
@@ -499,108 +536,72 @@
         <div class="team-card">
           <div class="avatar">M</div>
           <div class="name">Mario Quiroga</div>
-          <div class="role">Full-Stack · Backend · Dashboard</div>
+          <div class="role">Desarrollo de software</div>
+          <div class="stud">UTN FR Tucumán</div>
         </div>
         <div class="team-card">
           <div class="avatar">J</div>
           <div class="name">Jeremías Mastafa</div>
-          <div class="role">Firmware · Comunicaciones LoRa</div>
+          <div class="role">Firmware y comunicaciones</div>
+          <div class="stud">UTN FR Tucumán</div>
         </div>
         <div class="team-card">
           <div class="avatar">G</div>
           <div class="name">Gonzalo Lescano</div>
-          <div class="role">Negocio · Operaciones · Pitch</div>
+          <div class="role">Negocio y operaciones</div>
+          <div class="stud">UTN FR Tucumán</div>
         </div>
         <div class="team-card">
           <div class="avatar">N</div>
           <div class="name">Nicolás Pinto</div>
-          <div class="role">Hardware · Prototipado · Ensamblaje</div>
+          <div class="role">Hardware y prototipado</div>
+          <div class="stud">UTN FR Tucumán</div>
+        </div>
+      </div>
+      <div class="img-box team-img">
+        <div>
+          <span class="tag">Imagen sugerida</span>
+          <span>Foto del equipo completo en la UTN FR Tucumán. Los 4 integrantes juntos, preferentemente con el prototipo o en el laboratorio.</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Slide 8: Cierre -->
+  <!-- SLIDE 8: Cierre -->
   <div class="slide cierre" data-slide="7">
     <svg class="logo-slide" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <mask id="cutout7">
-          <rect x="140" y="30" width="320" height="190" fill="white"/>
-          <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" letter-spacing="0" fill="black">
-            <tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan>
-          </text>
-        </mask>
-      </defs>
+      <defs><mask id="m7"><rect x="140" y="30" width="320" height="190" fill="white"/>
+        <text x="300" y="185" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="70" text-anchor="middle" fill="black"><tspan>A</tspan><tspan dx="4">L</tspan><tspan dx="0">P</tspan><tspan dx="-2">A</tspan></text>
+      </mask></defs>
       <rect x="40" y="55" width="25" height="140" fill="#911B1E"/>
       <rect x="90" y="55" width="25" height="140" fill="#911B1E"/>
-      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#cutout7)"/>
+      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#m7)"/>
       <rect x="485" y="55" width="25" height="140" fill="#911B1E"/>
       <rect x="535" y="55" width="25" height="140" fill="#911B1E"/>
     </svg>
-    <div class="tagline">Cuidamos tu campo</div>
+    <div class="tagline" style="margin-bottom:2.5rem;">Cuidamos tu campo</div>
     <div class="contacto">
-      EmprendeU 2026 · UTN Facultad Regional Tucumán
+      Semifinales <strong>EmprendeU 2026</strong> · UTN Facultad Regional Tucumán
     </div>
   </div>
+
 </div>
 
 <div class="controls">
   <button id="prevBtn">←</button>
   <span class="counter" id="counter">1 / 8</span>
   <button id="nextBtn">→</button>
-  <button class="auto-btn active" id="autoBtn">▶ Auto</button>
 </div>
 
 <script>
   const slides = document.querySelectorAll('.slide')
-  const total = slides.length
-  let current = 0
-  let autoTimer = null
-  let autoPlay = true
-
-  function show(n) {
-    slides.forEach(s => s.classList.remove('active'))
-    slides[n].classList.add('active')
-    current = n
-    document.getElementById('counter').textContent = (n+1) + ' / ' + total
-  }
-
+  const total = slides.length; let current = 0;
+  function show(n) { slides.forEach(s => s.classList.remove('active')); slides[n].classList.add('active'); current = n; document.getElementById('counter').textContent = (n+1) + ' / ' + total }
   function next() { show((current + 1) % total) }
   function prev() { show((current - 1 + total) % total) }
-
-  document.getElementById('nextBtn').addEventListener('click', () => { resetAuto(); next() })
-  document.getElementById('prevBtn').addEventListener('click', () => { resetAuto(); prev() })
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === ' ') { resetAuto(); next(); e.preventDefault() }
-    if (e.key === 'ArrowLeft') { resetAuto(); prev(); e.preventDefault() }
-  })
-
-  function startAuto() {
-    stopAuto()
-    autoTimer = setInterval(next, 22500)
-    autoPlay = true
-    document.getElementById('autoBtn').textContent = '▶ Auto'
-    document.getElementById('autoBtn').classList.add('active')
-  }
-
-  function stopAuto() {
-    if (autoTimer) { clearInterval(autoTimer); autoTimer = null }
-    autoPlay = false
-    document.getElementById('autoBtn').textContent = '■ Detener'
-    document.getElementById('autoBtn').classList.remove('active')
-  }
-
-  function resetAuto() {
-    if (autoPlay) { stopAuto(); startAuto() }
-  }
-
-  document.getElementById('autoBtn').addEventListener('click', () => {
-    if (autoPlay) stopAuto()
-    else startAuto()
-  })
-
-  startAuto()
+  document.getElementById('nextBtn').addEventListener('click', next)
+  document.getElementById('prevBtn').addEventListener('click', prev)
+  document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === ' ') { next(); e.preventDefault() }; if (e.key === 'ArrowLeft') { prev(); e.preventDefault() } })
 </script>
 </body>
 </html>
