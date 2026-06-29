@@ -11,21 +11,21 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Montserrat', sans-serif;
-    background: #F5F5F5;
+    background: #D4B896;
     color: #222;
     min-height: 100vh;
     overflow-x: hidden;
   }
-  .container {
+  .wrapper {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  /* HERO */
+  /* HERO — fondo hueso como acento claro */
   .hero {
     width: 100%;
-    background: linear-gradient(170deg, #F5F5F5 0%, #fff 50%, #F5F5F5 100%);
+    background: #F5F5F5;
     border-bottom: 8px solid #911B1E;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
     line-height: 1.6;
   }
 
-  /* SECTIONS */
+  /* SECTIONS — todas sobre lino crudo */
   .section {
     width: 100%;
     padding: 4.5rem 0;
@@ -84,21 +84,21 @@
   .section .sub {
     text-align: center;
     font-size: 1rem;
-    color: #777;
+    color: #666;
     font-weight: 500;
     margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
-  .section.lino {
-    background: #D4B896;
+  .section.lino-oscuro {
+    background: #C9AD8D;
   }
-  .section.lino h2 { color: #222; }
-  .section.lino .sub { color: #555; }
-  .section.border-top { border-top: 1px solid #E8DDD0; }
+  .section.lino-claro {
+    background: #E8DDD0;
+  }
 
-  /* PROBLEMA - stats map */
+  /* PROBLEMA - stats */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -106,11 +106,11 @@
     margin-bottom: 2.5rem;
   }
   .stat-card {
-    background: #D4B896;
+    background: #F5F5F5;
     border-radius: 20px;
     padding: 2.5rem 1.5rem;
     text-align: center;
-    border: 2px solid transparent;
+    border: 2px solid #FFF;
     transition: border-color 0.2s;
   }
   .stat-card:hover { border-color: #911B1E; }
@@ -121,7 +121,6 @@
     color: #911B1E;
     line-height: 1;
   }
-  .stat-card .num small { font-size: 1.2rem; }
   .stat-card .label {
     font-size: 0.95rem;
     font-weight: 600;
@@ -137,7 +136,7 @@
     margin-top: 0.4rem;
   }
   .context-box {
-    background: #fff;
+    background: #F5F5F5;
     border-radius: 16px;
     padding: 2rem;
     border-left: 5px solid #911B1E;
@@ -151,7 +150,7 @@
   }
   .context-box strong { color: #222; }
 
-  /* PROBLEMA DETAIL */
+  /* PROBLEMA detail */
   .prob-detail {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -159,13 +158,13 @@
     margin-top: 0.5rem;
   }
   .prob-card {
-    background: #fff;
+    background: #F5F5F5;
     border-radius: 16px;
     padding: 1.8rem;
-    border: 2px solid #E8DDD0;
+    border: 2px solid #FFF;
     transition: border-color 0.2s;
   }
-  .prob-card:hover { border-color: #D4B896; }
+  .prob-card:hover { border-color: #911B1E; }
   .prob-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
   .prob-card h3 {
     font-weight: 800;
@@ -188,6 +187,7 @@
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     margin-top: 0.5rem;
+    border: 1px solid #FFF;
   }
 
   /* SOLUCION - steps */
@@ -202,26 +202,26 @@
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
-    background: #fff;
+    background: #F5F5F5;
     border-radius: 20px;
     padding: 1.8rem 2rem;
-    border: 2px solid #E8DDD0;
+    border: 2px solid #FFF;
     transition: border-color 0.2s;
   }
-  .step:hover { border-color: #D4B896; }
+  .step:hover { border-color: #911B1E; }
   .step-num {
     width: 52px;
     height: 52px;
     border-radius: 50%;
     background: #911B1E;
-    color: #fff;
+    color: #FFF;
     font-weight: 900;
     font-size: 1.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 3px solid #D4B896;
+    border: 3px solid #F5F5F5;
   }
   .step-text h3 {
     font-weight: 800;
@@ -238,11 +238,12 @@
   .step-text strong { color: #911B1E; }
 
   .diagram-box {
-    background: #D4B896;
+    background: #F5F5F5;
     border-radius: 20px;
     padding: 2rem;
     margin-top: 2.5rem;
     text-align: center;
+    border: 2px solid #FFF;
   }
   .diagram-box .flow {
     display: flex;
@@ -255,7 +256,7 @@
     color: #444;
   }
   .flow-item {
-    background: #fff;
+    background: #FFF;
     border-radius: 12px;
     padding: 1rem 1.5rem;
     min-width: 100px;
@@ -274,10 +275,10 @@
     gap: 1.5rem;
   }
   .dif-card {
-    background: #D4B896;
+    background: #F5F5F5;
     border-radius: 20px;
     padding: 2rem 1.8rem;
-    border: 2px solid transparent;
+    border: 2px solid #FFF;
     transition: border-color 0.2s;
   }
   .dif-card:hover { border-color: #911B1E; }
@@ -299,11 +300,11 @@
     line-height: 1.5;
   }
 
-  /* COMPETENCIA - mini tabla */
+  /* COMPETENCIA */
   .comp-table-wrap {
-    background: #fff;
+    background: #F5F5F5;
     border-radius: 16px;
-    border: 2px solid #E8DDD0;
+    border: 2px solid #FFF;
     overflow: hidden;
     margin-top: 1.5rem;
   }
@@ -314,7 +315,7 @@
   }
   .comp-table th {
     background: #911B1E;
-    color: #fff;
+    color: #FFF;
     font-weight: 700;
     padding: 0.9rem 1rem;
     text-align: left;
@@ -329,9 +330,9 @@
     font-weight: 500;
   }
   .comp-table tr:last-child td { border-bottom: none; }
-  .comp-table tr:hover td { background: #FDFBF8; }
+  .comp-table tr:hover td { background: #E8DDD0; }
   .comp-table .check { color: #911B1E; font-weight: 900; }
-  .comp-table .no { color: #ccc; }
+  .comp-table .no { color: #CCC; }
   .comp-table .alpa-row td {
     background: #D4B896;
     font-weight: 700;
@@ -346,10 +347,10 @@
     gap: 1.5rem;
   }
   .cover-card {
-    background: #fff;
+    background: #F5F5F5;
     border-radius: 16px;
     padding: 2rem;
-    border: 2px solid #E8DDD0;
+    border: 2px solid #FFF;
   }
   .cover-card h3 {
     font-weight: 800;
@@ -372,6 +373,7 @@
     border-radius: 20px;
     font-size: 0.8rem;
     margin-top: 0.6rem;
+    border: 1px solid #FFF;
   }
 
   /* CLIENTE */
@@ -381,11 +383,11 @@
     gap: 1.5rem;
   }
   .cliente-card {
-    background: #D4B896;
+    background: #F5F5F5;
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
-    border: 2px solid transparent;
+    border: 2px solid #FFF;
     transition: border-color 0.2s;
   }
   .cliente-card:hover { border-color: #911B1E; }
@@ -398,7 +400,7 @@
   }
   .cliente-card p {
     font-size: 0.85rem;
-    color: #555;
+    color: #666;
     font-weight: 500;
     line-height: 1.4;
   }
@@ -415,7 +417,7 @@
     border-radius: 50%;
     background: #D4B896;
     margin: 0 auto 0.8rem;
-    border: 4px solid #911B1E;
+    border: 4px solid #FFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -472,8 +474,8 @@
 </div>
 
 <!-- PROBLEMA -->
-<div class="section">
-  <div class="container">
+<div class="section lino-claro">
+  <div class="wrapper">
     <h2>El problema que nadie resuelve</h2>
     <p class="sub">Los incendios rurales en el NOA son cada vez más frecuentes y devastadores. Y el productor se entera cuando ya es tarde.</p>
 
@@ -529,8 +531,8 @@
 </div>
 
 <!-- SOLUCION -->
-<div class="section lino">
-  <div class="container">
+<div class="section">
+  <div class="wrapper">
     <h2>Cómo funciona ALPA</h2>
     <p class="sub">Un sistema de nodos sensores autoalimentados que se encargan de vigilar el campo y alertar al productor. Sin infraestructura previa.</p>
 
@@ -577,8 +579,8 @@
 </div>
 
 <!-- DIFERENCIAL -->
-<div class="section">
-  <div class="container">
+<div class="section lino-claro">
+  <div class="wrapper">
     <h2>Por qué ALPA es diferente</h2>
     <p class="sub">Las soluciones existentes están diseñadas para zonas urbanas o requieren infraestructura que el campo no tiene. ALPA nace para el que está afuera.</p>
 
@@ -604,8 +606,8 @@
 </div>
 
 <!-- COMPETENCIA -->
-<div class="section lino">
-  <div class="container">
+<div class="section">
+  <div class="wrapper">
     <h2>ALPA vs. otras soluciones</h2>
     <p class="sub">Ninguna de las startups globales de detección de incendios está diseñada para el productor sin conectividad en el lote.</p>
 
@@ -670,8 +672,8 @@
 </div>
 
 <!-- COBERTURA -->
-<div class="section">
-  <div class="container">
+<div class="section lino-claro">
+  <div class="wrapper">
     <h2>¿Por qué no hay señal en el campo?</h2>
     <p class="sub">El "mapa negro" del NOA: la mayoría de los lotes productivos están fuera de la cobertura 4G.</p>
 
@@ -701,8 +703,8 @@
 </div>
 
 <!-- CLIENTES -->
-<div class="section lino">
-  <div class="container">
+<div class="section">
+  <div class="wrapper">
     <h2>Para quién es ALPA</h2>
     <p class="sub">Dos perfiles de cliente, una misma necesidad: saber si el campo se está quemando antes de que sea tarde.</p>
 
@@ -727,8 +729,8 @@
 </div>
 
 <!-- EQUIPO -->
-<div class="section">
-  <div class="container">
+<div class="section lino-claro">
+  <div class="wrapper">
     <h2>El equipo</h2>
     <p class="sub">Estudiantes de Ingeniería Electrónica de la UTN Facultad Regional Tucumán.</p>
 
