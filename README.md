@@ -30,10 +30,12 @@ Nodo sensor (LoRa 915 MHz) → Gateway (LoRa → WiFi) → Servidor (Express + N
 ## Estructura del repositorio
 
 ```
-├── Comunicacion/          # Branding, identidad visual, assets, scratch de comunicación
+├── AGENTS.md              # Instrucciones para asistentes IA
+├── Comunicacion/          # Branding, identidad visual, assets, presentación semifinal
 ├── Desarrollo_Tecnico/    # Hardware, firmware, servidor y dashboard
 ├── Documentacion/         # Modelo de negocio, entregables, finanzas, validación, impacto
-└── Herramientas/          # Scripts de utilidad (md_to_docx, render_mermaid)
+├── Herramientas/          # Scripts de utilidad (md_to_docx, render_mermaid)
+└── scratch/               # Borradores, investigación, notas internas
 ```
 
 ### Ramas
