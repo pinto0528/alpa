@@ -24,8 +24,9 @@ Proyecto de detección temprana de incendios para productores agropecuarios en z
 │   ├── Assets/                   # Imágenes públicas (diagramas, fotos)
 │   ├── Branding/                 # Identidad visual, logo, manual
 │   │   ├── Identidad_visual/     # Manual, brand-presentation
+│   │   ├── Imprimibles/          # Poster AI/PDF para impresión
 │   │   └── Logo/                 # logo.svg, logo_rojo.png, etc.
-│   └── scratch/                  # Slides, borradores de presentación
+│   └── Presentacion_semifinal/   # Slides PNG, guión, capturas
 │
 ├── Desarrollo_Tecnico/           # Implementación técnica del sistema
 │   ├── Hardware/                 # Esquemas, prototipos, BOM
@@ -49,7 +50,7 @@ Proyecto de detección temprana de incendios para productores agropecuarios en z
 │   └── Validacion/               # Entrevistas, mapas de empatía
 │
 ├── Herramientas/                 # Scripts de utilidad (md_to_docx.py)
-└── scratch/                      # Auditorías, reportes internos
+└── scratch/                      # Borradores, investigación, notas internas
 ```
 
 ## Convenciones
