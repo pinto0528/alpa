@@ -42,19 +42,6 @@ Se identificaron más de 3.500 productores en Tucumán, Salta y Jujuy que están
 
 ---
 
-## Trayectoria en EmprendeU 2026
-
-El programa EmprendeU está organizado por la Universidad Nacional de Tucumán y acompaña el desarrollo de proyectos innovadores en etapas. ALPA participó con las siguientes entregas:
-
-- **Entregable 1** — Definición del problema y validación con usuarios reales.
-- **Entregable 2** — Modelo de negocio, análisis de mercado y propuesta de valor.
-- **Entregable 3** — Prototipo funcional y presupuesto.
-- **Entregable 4** — Pitch final, presentación y one pager.
-
-El equipo presentó el proyecto en la instancia semifinal con un pitch de 3 minutos y una presentación visual de 8 slides, con enfoque centrado en el problema del productor y la solución de negocio.
-
----
-
 ## Estado actual
 
 ALPA cuenta con un prototipo funcional validado en laboratorio. Se realizaron pruebas de comunicación entre nodos, detección de llama y humo, y autonomía energética. El sistema incluye un panel de monitoreo web donde se visualizan en tiempo real las lecturas de los sensores y el estado de cada nodo en el campo.

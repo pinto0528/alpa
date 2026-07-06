@@ -1,5 +1,10 @@
 # Inventario de Componentes
 
+**ALPA — Sistema de Alerta de Incendios Rurales**
+
+**Fecha:** Junio 2026
+**Versión:** 1.0
+
 > **Actualizado:** 2026-06-10
 
 ## Placas de desarrollo

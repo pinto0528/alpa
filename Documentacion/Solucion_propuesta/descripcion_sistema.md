@@ -1,10 +1,9 @@
 # Descripción del Sistema
 
-**Sistema de Alerta de Incendios Rurales**
+**ALPA — Sistema de Alerta de Incendios Rurales**
 
 **Fecha:** Junio 2026
 **Versión:** 1.0
-**Autor/es:** Equipo EmprendeU — UTN Facultad Regional Tucumán
 
 ## 1. Visión general
 

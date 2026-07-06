@@ -1,10 +1,15 @@
 # Manual de Identidad Visual — ALPA
 
+**ALPA — Sistema de Alerta de Incendios Rurales**
+
+**Fecha:** Junio 2026
+**Versión:** 1.0
+
 ---
 
 ## Descripción general
 
-El isologotipo es una composición geométrica y simétrica. Está formado por un rectángulo central sólido en color rojo oscuro (`#911B1E`), flanqueado a ambos lados por dos pares de barras verticales paralelas del mismo color. Dentro del bloque central se ubica la palabra **ALPA** calada (*negative space*), cuyo color depende del fondo sobre el que se muestre, generada con la tipografía **Playfair Display** en peso **700 (bold)** y tamaño **70px**, con espaciado ajustado entre letras (`A–L: -11`, `L–P: -12`, `P–A: -15`).
+El isologotipo es una composición geométrica y simétrica. Está formado por un rectángulo central sólido en color rojo oscuro (`#911B1E`), flanqueado a ambos lados por dos pares de barras verticales paralelas del mismo color. Dentro del bloque central se ubica la palabra **ALPA** calada (_negative space_), cuyo color depende del fondo sobre el que se muestre, generada con la tipografía **Playfair Display** en peso **700 (bold)** y tamaño **70px**, con espaciado ajustado entre letras.
 
 ---
 
@@ -27,7 +32,7 @@ Su disposición vertical a los lados del bloque tiene un triple significado conc
 Cumple una doble función:
 
 1. Por un lado, es el color universal de la alerta, el calor y el fuego (la amenaza que el sistema combate).
-2. Por otro lado, remite al color natural de la tierra arcillosa (*Allpa*, en quechua) y al tinte tradicional de los telares norteños.
+2. Por otro lado, remite al color natural de la tierra arcillosa (_Allpa_, en quechua) y al tinte tradicional de los telares norteños.
 
 ### Tagline: "Cuidamos tu campo"
 
@@ -37,22 +42,22 @@ Refleja el compromiso directo con el productor. Tono protector, cercano y region
 
 ## Paleta de colores
 
-| Color | Código | Uso |
-|---|---|---|
-| **Rojo inca** (primario) | `#911B1E` | Logo, acentos, headers, alertas, CTA |
-| **Pizarra** | `#222222` | Fondos oscuros, texto principal en contraste claro |
+| Color                       | Código    | Uso                                                 |
+| --------------------------- | --------- | --------------------------------------------------- |
+| **Rojo inca** (primario)    | `#911B1E` | Logo, acentos, headers, alertas, CTA                |
+| **Pizarra**                 | `#222222` | Fondos oscuros, texto principal en contraste claro  |
 | **Lino crudo** (secundario) | `#D4B896` | Fondos de presentaciones, detalles, slide de cierre |
-| **Hueso** | `#F5F5F5` | Fondo de dashboard, impresos, tarjetas |
+| **Hueso**                   | `#F5F5F5` | Fondo de dashboard, impresos, tarjetas              |
 
 ---
 
 ## Tipografía
 
-| Rol | Fuente | Peso |
-|---|---|---|
-| **Logo** | Playfair Display | 700 (bold) |
-| **Títulos** | Playfair Display | 700 (bold) |
-| **Cuerpo / UI** | Montserrat | 300 (light), 400 (regular), 700 (bold) |
+| Rol             | Fuente           | Peso                                   |
+| --------------- | ---------------- | -------------------------------------- |
+| **Logo**        | Playfair Display | 700 (bold)                             |
+| **Títulos**     | Playfair Display | 700 (bold)                             |
+| **Cuerpo / UI** | Montserrat       | 300 (light), 400 (regular), 700 (bold) |
 
 - **Playfair Display** (serif) se usa para títulos, cabeceras y el logo. Comunica institucionalidad, tradición y confianza.
 - **Montserrat** (sans-serif) se usa para todo texto de cuerpo, etiquetas, leyendas y elementos de UI. Limpia, legible y moderna.

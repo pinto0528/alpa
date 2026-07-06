@@ -1,5 +1,10 @@
 # Diagrama en bloques del sistema
 
+**ALPA — Sistema de Alerta de Incendios Rurales**
+
+**Fecha:** Junio 2026
+**Versión:** 1.0
+
 ```mermaid
 graph TB
     subgraph Campo["Campo"]

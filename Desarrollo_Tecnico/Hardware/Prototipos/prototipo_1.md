@@ -1,5 +1,10 @@
 # Prototipo 1 — WeMos LOLIN32
 
+**ALPA — Sistema de Alerta de Incendios Rurales**
+
+**Fecha:** Junio 2026
+**Versión:** 1.0
+
 > **Placa:**  WeMos LOLIN32 (ESP32)
 > **Estado:** funcional
 

@@ -1,5 +1,10 @@
 # Prototipo 2 — XIAO ESP32-S3 + Wio-SX1262
 
+**ALPA — Sistema de Alerta de Incendios Rurales**
+
+**Fecha:** Junio 2026
+**Versión:** 1.0
+
 > **Placa:**  XIAO ESP32-S3 + Wio-SX1262 (shield LoRa)
 > **Estado:** funcional
 

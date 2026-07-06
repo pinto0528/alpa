@@ -2,7 +2,7 @@
 
 **Cuidamos tu campo**
 
-Sistema autónomo de detección temprana de incendios rurales para productores agrícolas en zonas sin conectividad. Desarrollado en el marco del programa **EmprendeU 2026**.
+Sistema autónomo de detección temprana de incendios rurales para productores agrícolas en zonas sin conectividad.
 
 ## Problema
 
@@ -31,43 +31,16 @@ Nodo sensor (LoRa 915 MHz) → Gateway (LoRa → WiFi) → Servidor (Express + N
 
 ```
 ├── AGENTS.md              # Instrucciones para asistentes IA
-├── Comunicacion/          # Branding, identidad visual, assets, presentación semifinal
+├── Comunicacion/          # Branding, identidad visual, assets
 ├── Desarrollo_Tecnico/    # Hardware, firmware, servidor y dashboard
-├── Documentacion/         # Modelo de negocio, entregables, finanzas, validación, impacto
-├── Herramientas/          # Scripts de utilidad (md_to_docx, render_mermaid)
+├── Documentacion/         # Investigación, negocio, solución, resumen y anexos
+├── Herramientas/          # Scripts de utilidad
 └── scratch/               # Borradores, investigación, notas internas
-```
-
-### Ramas
-
-| Rama | Contenido |
-|---|---|
-| `develop` | Todas las carpetas integradas |
-| `comunicacion` | Solo `Comunicacion/` + `Herramientas/` |
-| `desarrollo-tecnico` | Solo `Desarrollo_Tecnico/` + `Herramientas/` |
-| `documentacion` | Solo `Documentacion/` + `Herramientas/` |
-
-## Uso local
-
-### Servidor
-
-```bash
-cd Desarrollo_Tecnico/Software/Servidor
-npm install
-npm start
-```
-
-### Dashboard
-
-```bash
-cd Desarrollo_Tecnico/Software/Dashboard
-npm install
-npm run dev
 ```
 
 ## Estado del proyecto
 
-MVP funcional con entregable final (Entregable 4) completado y presentado.
+MVP funcional: firmware para nodo sensor y gateway funcional, backend y dashboard desarrollados (código en git history), documentación completa.
 
 ## Marca
 
