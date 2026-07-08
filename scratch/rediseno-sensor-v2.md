@@ -108,71 +108,6 @@ Cuando se detecta fuego, se envía por LoRa un JSON pequeño (~50 bytes):
 
 ---
 
-## Backend y Dashboard
-
-Se mantiene la arquitectura existente de Node.js + React, actualizando para datos reales con PostgreSQL, autenticación JWT, y conexión WebSocket en lugar de datos mockeados.
-
-### Backend
-
-| Aspecto | Actual | Nuevo |
-|---|---|---|
-| Framework | Express | Fastify |
-| Base de datos | NeDB | PostgreSQL + PostGIS |
-| ORM | — | Drizzle |
-| Auth | ninguna | JWT + bcrypt |
-| Tiempo real | Socket.IO | Socket.IO |
-| API endpoints | 4 | 8+ (CRUD nodos, usuarios, alertas, eventos) |
-| Docker | no | Docker Compose |
-
-### Dashboard
-
-| Aspecto | Actual | Nuevo |
-|---|---|---|
-| Framework | React 18 | React 18 |
-| Build | Vite | Vite |
-| Estilos | ninguno | Tailwind |
-| Mapas | Leaflet | Leaflet |
-| Datos | mockeados | WebSocket real desde servidor |
-| Login | hardcodeado | JWT real |
-
-### Dashboard — pantallas
-
-1. **Login** — autenticación JWT
-2. **Mapa en tiempo real** — nodos con ubicación, estado, última alerta. Cobertura de 360° por nodo (corona de 3 sectores de cámara)
-3. **Panel de nodos** — lista de nodos con estado (online/offline), batería, temperatura, última foto
-4. **Timeline de alertas** — histórico con nivel de confianza, dirección, nodo, y foto asociada (cuando esté disponible)
-5. **Detalle de alerta** — foto de la alerta + datos del nodo + ubicación en mapa
-
-### API endpoints propuestos
-
-| Método | Ruta | Descripción |
-|---|---|---|
-| POST | `/api/auth/login` | Login JWT |
-| POST | `/api/auth/register` | Registrar usuario |
-| GET | `/api/nodos` | Listar nodos |
-| GET | `/api/nodos/:id` | Detalle nodo |
-| POST | `/api/eventos` | Recibir evento de sensor |
-| GET | `/api/eventos` | Listar eventos |
-| GET | `/api/alertas` | Listar alertas |
-| GET | `/api/alertas/:id/foto` | Obtener foto de alerta |
-| WebSocket | `nuevo-evento` | Evento en tiempo real |
-| WebSocket | `nueva-alerta` | Alerta en tiempo real |
-
----
-
-## Infraestructura
-
-```
-docker-compose.yml
-├── postgres (con PostGIS)
-├── servidor (Fastify + Node.js)
-└── dashboard (Nginx sirviendo build Vite)
-```
-
-Despliegue inicial: servidor VPS simple con Docker Compose.
-
----
-
 ## Próximos pasos
 
 1. Validar Arducam Mini SPI en ESP32-S3 (3 cámaras mismo bus)
@@ -181,7 +116,4 @@ Despliegue inicial: servidor VPS simple con Docker Compose.
 4. Implementar frame differencing en firmware
 5. Integrar TinyML en firmware
 6. Probar ciclo completo en campo
-7. Rediseñar backend (Fastify + PostgreSQL + Drizzle)
-8. Rediseñar dashboard (React + Tailwind + WebSocket real)
-9. Dockerizar todo
-10. Prueba de campo con productor real
+7. Prueba de campo con productor real
