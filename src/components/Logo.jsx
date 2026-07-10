@@ -1,0 +1,30 @@
+export default function Logo({ className = '' }) {
+  return (
+    <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <defs>
+        <mask id="logo-mask">
+          <rect x="140" y="30" width="320" height="190" fill="white" />
+          <text
+            x="300"
+            y="185"
+            fontFamily="'Playfair Display', Georgia, serif"
+            fontWeight="700"
+            fontSize="70"
+            textAnchor="middle"
+            fill="black"
+          >
+            <tspan>A</tspan>
+            <tspan dx="4">L</tspan>
+            <tspan dx="0">P</tspan>
+            <tspan dx="-2">A</tspan>
+          </text>
+        </mask>
+      </defs>
+      <rect x="40" y="55" width="25" height="140" fill="#911B1E" />
+      <rect x="90" y="55" width="25" height="140" fill="#911B1E" />
+      <rect x="140" y="30" width="320" height="190" fill="#911B1E" mask="url(#logo-mask)" />
+      <rect x="485" y="55" width="25" height="140" fill="#911B1E" />
+      <rect x="535" y="55" width="25" height="140" fill="#911B1E" />
+    </svg>
+  )
+}
